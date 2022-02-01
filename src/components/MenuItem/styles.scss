@@ -1,0 +1,16 @@
+.menuItem {
+  font-size: 2.5rem;
+
+  &__icon {
+    &.primary {
+      color: var(--ion-color-primary);
+    }
+    &.light {
+      color: var(--light);
+    }
+  }
+
+  &__label {
+    margin-left: 1rem;
+  }
+}

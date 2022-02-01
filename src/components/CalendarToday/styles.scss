@@ -1,0 +1,12 @@
+.calendarToday {
+  width: 3.1rem;
+  height: auto;
+  position: relative;
+
+  &__number {
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-40%);
+  }
+}

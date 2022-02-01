@@ -1,0 +1,15 @@
+:root {
+  --ion-font-family: "Poppins", "sans-serif";
+  --purple-light: #570a70;
+  --purple-dark: #3a074b;
+  --light: #f1f1f1;
+  --ion-background-color: var(--purple-dark);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.randoMenuApp {
+  --background: var(--purple-dark);
+}

@@ -1,0 +1,14 @@
+.toolbar {
+  --background: var(--purple-dark);
+  --color: var(--light);
+  --border-color: transparent;
+
+  &__logo {
+    padding-left: 1rem;
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: var(--ion-color-primary);
+  }
+}
+
+

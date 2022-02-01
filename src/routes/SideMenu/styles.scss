@@ -1,0 +1,10 @@
+.sideMenu {
+  background-color: var(--purple-dark);
+  &__content {
+    background-color: var(--purple-light);
+  }
+  &__list {
+    color: var(--light);
+    padding: 1rem 1rem 1rem 0;
+  }
+}
