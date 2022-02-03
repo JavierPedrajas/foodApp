@@ -1,4 +1,4 @@
 export interface IIngredient {
-  id: string;
+  id: number;
   name: string;
 }

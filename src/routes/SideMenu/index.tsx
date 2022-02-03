@@ -26,6 +26,7 @@ const SideMenu: React.FC = () => {
                 link={item.link}
                 currentPath={location.pathname}
                 icon={item.icon}
+                key={item.link}
               />
             );
           })}

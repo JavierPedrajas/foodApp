@@ -1,8 +1,8 @@
 import { IMeal, IRecipe } from ".";
 
 export interface IMealCalendar {
-  meal: IMeal;
-  recipe: IRecipe;
+  mealId: number;
+  recipeId: number;
 }
 
 export interface IDay {
@@ -10,8 +10,4 @@ export interface IDay {
   meals: IMealCalendar[];
 }
 
-export interface IWeek {
-  startDate: string;
-  endDate: string;
-  days: IDay[];
-}
+export type TCalendar = IDay[];
