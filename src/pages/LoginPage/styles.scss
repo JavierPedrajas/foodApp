@@ -1,0 +1,130 @@
+.login {
+  height: 100vh;
+  width: 100vw;
+
+  background-size: cover;
+  background-position-x: center;
+  // background-color: var(--purple-dark);
+
+  &.one {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(25, 30, 36, 0.9),
+        rgba(25, 30, 36, 0.9)
+      ),
+      url("../../assets/loginImg/img1.png");
+  }
+
+  &.two {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(25, 30, 36, 0.9),
+        rgba(25, 30, 36, 0.9)
+      ),
+      url("../../assets/loginImg/img2.png");
+  }
+  &.three {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(25, 30, 36, 0.9),
+        rgba(25, 30, 36, 0.9)
+      ),
+      url("../../assets/loginImg/img3.png");
+  }
+  &.four {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(25, 30, 36, 0.9),
+        rgba(25, 30, 36, 0.9)
+      ),
+      url("../../assets/loginImg/img4.png");
+  }
+
+  &__main {
+    &__logo {
+      width: 100%;
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      text-align: center;
+      color: var(--main);
+    }
+    &__buttons {
+      position: absolute;
+      left: 50%;
+      bottom: 1.5rem;
+      transform: translateX(-50%);
+      width: 80%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    &__buttons {
+      width: 80%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__header {
+      font-size: 1.6rem;
+      font-weight: 600;
+      // text-transform: uppercase;
+      margin: 5rem 0 2.2rem;
+      color: white;
+    }
+
+    &__switch {
+      margin-top: 5rem;
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    &__modal::part(content) {
+      overflow-y: scroll;
+    }
+    &__terms {
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2.2rem;
+      margin-left: 4rem;
+      font-size: 1.3rem;
+      &__text {
+        width: 70%;
+        margin-left: 1rem;
+        &__clickable {
+          font-weight: 600;
+          margin-left: 0.3rem;
+        }
+      }
+    }
+    &__margin-bottom {
+      width: 80%;
+      margin-bottom: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    &__passwordlength {
+      // color: #040707;
+      font-size: 1.2rem;
+      margin-top: 0.2rem;
+      font-weight: 600;
+    }
+  }
+}

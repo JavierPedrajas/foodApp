@@ -3,6 +3,7 @@ import {
   faCog,
   faHamburger,
   faHome,
+  faSignOutAlt,
   faUser,
   IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
@@ -38,5 +39,10 @@ export const MenuItemList: IMenuItem[] = [
     title: "Configuración",
     link: "/config",
     icon: faCog,
+  },
+  {
+    title: "Cerrar sesión",
+    link: "/logout",
+    icon: faSignOutAlt,
   },
 ];

@@ -9,6 +9,7 @@
     "@capacitor/haptics": "1.1.4",
     "@capacitor/keyboard": "1.2.1",
     "@capacitor/status-bar": "1.0.7",
+    "@capacitor/storage": "^1.2.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",

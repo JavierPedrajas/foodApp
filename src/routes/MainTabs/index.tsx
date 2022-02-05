@@ -7,7 +7,7 @@ import {
   IonIcon,
 } from "@ionic/react";
 import React from "react";
-import { Route } from "react-router";
+import { Redirect, Route } from "react-router";
 import { listRoute, scheduleRoute, todayRoute } from "..";
 import TodayPage from "../../pages/Today";
 import SchedulePage from "../../pages/Schedule";
@@ -24,6 +24,7 @@ import "./styles.scss";
 import CalendarToday from "../../components/CalendarToday";
 
 const MainTabs: React.FC = () => {
+  console.log("maintab");
   return (
     <IonTabs className="tabs">
       <IonRouterOutlet>

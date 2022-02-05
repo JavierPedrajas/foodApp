@@ -3,16 +3,15 @@ import { IIngredient, IMeal, IRecipe, TCalendar } from ".";
 export interface IUser {
   uuid: string;
   name: string;
-  surname: string;
   email: string;
   config: IConfig;
-}
-
-export interface IConfig {
+  calendar: TCalendar;
   meals: IMeal[];
   ingredients: IIngredient[];
   recipes: IRecipe[];
-  calendar: TCalendar;
+}
+
+export interface IConfig {
   // language:string // TB Implemented
   // weekStart: number // TB Implemented
 }

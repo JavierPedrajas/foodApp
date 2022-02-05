@@ -2,6 +2,7 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IonItem, IonIcon, IonLabel } from "@ionic/react";
 import React from "react";
+import { logoutUser } from "utils/services";
 import "./styles.scss";
 
 interface IMenuItem {
@@ -22,6 +23,17 @@ const MenuItem: React.FC<IMenuItem> = (props) => {
 
   if (currentPath === link) {
     menuColor = "primary";
+  }
+
+  if (link === "/logout") {
+    return (
+      <IonItem onClick={logoutUser} className="menuItem">
+        <FontAwesomeIcon icon={icon} className={`menuItem__icon ${menuColor}`} />
+        <IonLabel color={menuColor} className="menuItem__label">
+          {title}
+        </IonLabel>
+      </IonItem>
+    );
   }
 
   return (

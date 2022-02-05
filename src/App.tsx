@@ -34,6 +34,7 @@ import { firebaseAuth, logoutUser } from "./utils/services";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, User } from "firebase/auth";
 import LoadingSpinner from "./components/LoadingSpinner";
+import LoginNavigation from "routes/LoginNavigation";
 
 setupIonicReact();
 
@@ -48,6 +49,7 @@ const App: React.FC = () => {
       if (user) {
         if (user.emailVerified) {
           setLoginStatus("logedIn");
+          console.log("logedIn");
         } else {
           setLoginStatus("notVerified");
         }
@@ -89,15 +91,15 @@ const App: React.FC = () => {
     );
   }
 
-  // if (loginStatus === "logedOut") {
-  //   return (
-  //     <IonApp>
-  //       <IonReactRouter>
-  //         <LoginNavigation />
-  //       </IonReactRouter>
-  //     </IonApp>
-  //   );
-  // }
+  if (loginStatus === "logedOut") {
+    return (
+      <IonApp>
+        <IonReactRouter>
+          <LoginNavigation />
+        </IonReactRouter>
+      </IonApp>
+    );
+  }
 
   return (
     <IonApp>
@@ -108,6 +110,7 @@ const App: React.FC = () => {
             <Route path="/tabs" component={MainTabs} />
             <Route path="/recipes" component={Recipes} exact />
             <Redirect from="/" exact to="/tabs/today" />
+            <Redirect from="/login" exact to="/tabs/today" />
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>

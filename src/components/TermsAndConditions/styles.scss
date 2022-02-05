@@ -1,0 +1,12 @@
+.terms {
+  padding: 1rem 1.5rem;
+  overflow-y: scroll;
+  color: white;
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+  }
+}
