@@ -35,6 +35,9 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged, User } from "firebase/auth";
 import LoadingSpinner from "./components/LoadingSpinner";
 import LoginNavigation from "routes/LoginNavigation";
+import Ingredients from "pages/Ingredients";
+import Profile from "pages/Profile";
+import Config from "pages/ConfigPage";
 
 setupIonicReact();
 
@@ -109,6 +112,9 @@ const App: React.FC = () => {
           <IonRouterOutlet id="main">
             <Route path="/tabs" component={MainTabs} />
             <Route path="/recipes" component={Recipes} exact />
+            <Route path="/ingredients" component={Ingredients} exact />
+            <Route path="/profile" component={Profile} exact />
+            <Route path="/config" component={Config} exact />
             <Redirect from="/" exact to="/tabs/today" />
             <Redirect from="/login" exact to="/tabs/today" />
           </IonRouterOutlet>

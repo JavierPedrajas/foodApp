@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react";
 // import EmailIcon from "assets/icons/email.svg";
 // import PasswordIcon from "assets/icons/password.svg";
 import TermsAndConditions from "components/TermsAndConditions";
-import { sendVerificationEmail, signupNewUser } from "utils/services";
+import { addUser, sendVerificationEmail, signupNewUser } from "utils/services";
 import LoadingSpinner from "components/LoadingSpinner";
 
 interface SignupProps {
@@ -38,8 +38,10 @@ const Signup: React.FC<SignupProps> = (props) => {
   const signupHandler = async () => {
     setLoading(true);
     try {
-      await signupNewUser(email!, password!);
+      const newUser = await signupNewUser(email!, password!);
       await sendVerificationEmail();
+      console.log("newUser", newUser);
+      await addUser({ uid: newUser.user.uid, email: email! });
       setLoading(false);
 
       setLoginAlert({

@@ -52,7 +52,7 @@ export const signupNewUser = async (email: string, password: string) => {
   };
 
   export const updateUser = async (usuario: IUser) => {
-    const docRef = doc(firestore, "usuarios", usuario.uuid);
+    const docRef = doc(firestore, "usuarios", usuario.uid);
     try {
       await updateDoc(docRef, { ...usuario });
     } catch (error) {
