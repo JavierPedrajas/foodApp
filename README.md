@@ -23,13 +23,13 @@ Once the app is ready, I will deploy it in the Play Store.
 
 ## Installation
 
-Use the package manager [yarn](https://yarnpkg.com/) to install the dependencies of RandoMenu.
+Use the package manager [npm](https://www.npmjs.com/) to install the dependencies of RandoMenu.
 
 You will also need to install the Ionic CLI to preview the app in your browser.
 
 ```bash
-$ yarn
-$ yarn global add @ionic/cli
+$ npm i
+$ npm i -g add @ionic/cli
 ```
 
 ## Usage
