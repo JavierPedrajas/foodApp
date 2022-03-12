@@ -1,14 +1,14 @@
 import { IonContent, IonPage } from "@ionic/react";
 import TopBar from "components/TopBar";
 import React from "react";
-import "./styles.scss"
+import "./styles.scss";
 
 interface IProfile {}
 
 const Profile: React.FC<IProfile> = (props) => {
   return (
     <IonPage>
-      <TopBar title="Perfil" />
+      <TopBar title={"routes.SideMenu.Profile"} />
       <IonContent fullscreen></IonContent>
     </IonPage>
   );

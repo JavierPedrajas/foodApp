@@ -13,6 +13,8 @@ import React, { useEffect, useState } from "react";
 import TermsAndConditions from "components/TermsAndConditions";
 import { addUser, sendVerificationEmail, signupNewUser } from "utils/services";
 import LoadingSpinner from "components/LoadingSpinner";
+import { FormattedMessage } from "react-intl";
+import { useFormatMessage } from "languages/utils";
 
 interface SignupProps {
   backToLogin: () => void;
@@ -35,27 +37,38 @@ const Signup: React.FC<SignupProps> = (props) => {
     header: string;
   }>({ open: false, text: "", header: "" });
 
+  const successHeader = useFormatMessage("pages.LoginPage.Signup.Completed");
+  const successText = useFormatMessage("pages.LoginPage.Signup.EmailSent");
+
+  const errorHeader = useFormatMessage("pages.LoginPage.Signup.Error");
+  const errorText = useFormatMessage("pages.LoginPage.Signup.EmailInUse");
+
   const signupHandler = async () => {
     setLoading(true);
     try {
       const newUser = await signupNewUser(email!, password!);
       await sendVerificationEmail();
-      console.log("newUser", newUser);
-      await addUser({ uid: newUser.user.uid, email: email! });
+      await addUser({
+        uid: newUser.user.uid,
+        email: email!,
+        config: {
+          language: navigator.language === "es-ES" ? "es-ES" : "en-US",
+        },
+      });
       setLoading(false);
 
       setLoginAlert({
         open: true,
-        header: "Registro completado!",
-        text: "Te hemos enviado un email de confirmación, por favor revisa tu bandeja de entrada y spam",
+        header: successHeader,
+        text: successText,
       });
     } catch (error) {
       setLoading(false);
 
       setLoginAlert({
         open: true,
-        header: "Ha habido un error",
-        text: "Este email ya está en uso, por favor inicia sesión",
+        header: errorHeader,
+        text: errorText,
       });
     }
   };
@@ -85,7 +98,9 @@ const Signup: React.FC<SignupProps> = (props) => {
           }}
         />
       </IonModal>
-      <IonText className={"login__signup__header"}>Regístrate gratis</IonText>
+      <IonText className={"login__signup__header"}>
+        <FormattedMessage id={"pages.LoginPage.Signup"} />
+      </IonText>
       <div className={"login__signup__margin-bottom"}>
         <Input
           inputType="email"
@@ -99,13 +114,13 @@ const Signup: React.FC<SignupProps> = (props) => {
         <Input
           inputType="password"
           handleChange={(event) => setPassword(event.target.value)}
-          placeholder="Contraseña"
+          placeholder={useFormatMessage("pages.LoginPage.Login.Password")}
           // icon={PasswordIcon}
           login
         />
         {password && password.length < 6 && (
           <IonText className={"login__signup__passwordlength"}>
-            La contraseña debe tener 6 o más caracteres
+            <FormattedMessage id={"pages.LoginPage.Login.PasswordLength"} />
           </IonText>
         )}
       </div>
@@ -118,12 +133,12 @@ const Signup: React.FC<SignupProps> = (props) => {
           color="primary"
         />
         <div className={"login__signup__terms__text"}>
-          He leído y acepto los{" "}
+          <FormattedMessage id={"pages.LoginPage.Signup.ReadAndAccept"} />{" "}
           <span
             className={"login__signup__terms__text__clickable"}
             onClick={() => setTermsOpen(true)}
           >
-            términos y condiciones de uso
+            <FormattedMessage id={"pages.LoginPage.Signup.Terms"} />
           </span>
         </div>
       </div>
@@ -138,11 +153,14 @@ const Signup: React.FC<SignupProps> = (props) => {
             (password != undefined && password.length < 6)
           }
         >
-          Registrarme
+          <FormattedMessage id={"pages.LoginPage.Signup"} />
         </Button>
       </div>
       <IonText className={"login__signup__switch"}>
-        ¿Ya tienes una cuenta? <b onClick={backToLogin}>Inicia sesión</b>
+        <FormattedMessage id={"pages.LoginPage.Signup.AlreadyAccount"} />{" "}
+        <b onClick={backToLogin}>
+          <FormattedMessage id={"pages.LoginPage.Login"} />
+        </b>
       </IonText>
     </div>
   );

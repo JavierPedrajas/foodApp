@@ -73,10 +73,20 @@ export const deleteIngredient = async (ingredient: IIngredient) => {
     return;
   }
 
+  const currentIngredients = await getIngredients();
+  if (!currentIngredients) {
+    return;
+  }
+
+  const removeIndex = currentIngredients.data.findIndex(
+    (ings) => ings.id === ingredient.id
+  );
+  currentIngredients.data.splice(removeIndex, 1);
+
   const docRef = doc(firestore, "ingredients", userDoc.uid);
 
   try {
-    await deleteDoc(docRef);
+    await updateDoc(docRef, { data: currentIngredients });
   } catch (error) {
     console.log(error);
   }

@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCarrot } from "@fortawesome/free-solid-svg-icons";
 
 import "./styles.scss";
+import { FormattedMessage } from "react-intl";
 
 interface ITopBar {
   title?: string;
@@ -31,7 +32,9 @@ const TopBar: React.FC<ITopBar> = (props) => {
             RandoMenu
           </div>
         ) : (
-          <IonTitle>{title}</IonTitle>
+          <IonTitle>
+            <FormattedMessage id={title} />
+          </IonTitle>
         )}
       </IonToolbar>
     </IonHeader>

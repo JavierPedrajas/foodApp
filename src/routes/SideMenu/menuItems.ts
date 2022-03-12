@@ -16,32 +16,32 @@ interface IMenuItem {
 
 export const MenuItemList: IMenuItem[] = [
   {
-    title: "Inicio",
+    title: "routes.SideMenu.Home",
     link: "/tabs/today",
     icon: faHome,
   },
   {
-    title: "Recetas",
+    title: "routes.SideMenu.Recipes",
     link: "/recipes",
     icon: faHamburger,
   },
   {
-    title: "Ingredientes",
+    title: "routes.SideMenu.Ingredients",
     link: "/ingredients",
     icon: faCarrot,
   },
   {
-    title: "Perfil",
+    title: "routes.SideMenu.Profile",
     link: "/profile",
     icon: faUser,
   },
   {
-    title: "Configuración",
+    title: "routes.SideMenu.Configuration",
     link: "/config",
     icon: faCog,
   },
   {
-    title: "Cerrar sesión",
+    title: "routes.SideMenu.Logout",
     link: "/logout",
     icon: faSignOutAlt,
   },
