@@ -1,15 +1,65 @@
-import { IonContent, IonPage } from "@ionic/react";
+import {
+  IonContent,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonPage,
+  IonSelect,
+  IonSelectOption,
+} from "@ionic/react";
 import TopBar from "components/TopBar";
-import React from "react";
-import "./styles.scss"
+import React, { useContext, useState } from "react";
+import "./styles.scss";
+import { Context, LangType } from "context/LangContext";
+import { getUserDoc, updateUser } from "utils/services";
+import LoadingSpinner from "components/LoadingSpinner";
+import { FormattedMessage } from "react-intl";
+import { useFormatMessage } from "languages/utils";
+import { SelectOptions } from "utils/functions";
 
-interface IConfig {}
+const Config: React.FC = (props) => {
+  const [isLoading, setIsLoading] = useState(false);
 
-const Config: React.FC<IConfig> = (props) => {
+  const langContext = useContext(Context);
+
+  const updateLanguage = async (lang: LangType) => {
+    setIsLoading(true);
+    const currentUser = await getUserDoc();
+    if (currentUser) {
+      currentUser.config.language = lang;
+      await updateUser(currentUser);
+    }
+    langContext.selectLanguage(lang);
+    setIsLoading(false);
+  };
+
   return (
     <IonPage>
-      <TopBar title="Configuración" />
-      <IonContent fullscreen></IonContent>
+      <LoadingSpinner open={isLoading} />
+      <TopBar title={"routes.SideMenu.Configuration"} />
+      <IonContent fullscreen>
+        <IonList>
+          <IonItem>
+            <IonLabel color="light">
+              <FormattedMessage id={"pages.ConfigPage.Language"} />
+            </IonLabel>
+            <IonSelect
+              value={langContext.locale}
+              onIonChange={(e) => updateLanguage(e.detail.value)}
+              interfaceOptions={SelectOptions}
+              okText={useFormatMessage("modal.buttons.OK")}
+              cancelText={useFormatMessage("modal.buttons.Cancel")}
+            >
+              <IonSelectOption value={"es-ES"}>
+                <FormattedMessage id={"pages.ConfigPage.Spanish"} />
+              </IonSelectOption>
+              <IonSelectOption value={"en-US"}>
+                <FormattedMessage id={"pages.ConfigPage.English"} />
+              </IonSelectOption>
+            </IonSelect>
+          </IonItem>
+        </IonList>
+      </IonContent>
     </IonPage>
   );
 };

@@ -10,10 +10,22 @@
   --ion-background-color: var(--purple-dark);
 }
 
+.my-custom-select .alert-wrapper {
+  --ion-text-color: var(--light);
+  --ion-color-step-850: var(--light);
+  color: var(--light);
+}
+
 html {
   font-size: 62.5%;
 }
 
 .randoMenuApp {
   --background: var(--purple-dark);
+}
+
+// ion-select::part(placeholder),
+ion-select::part(text),
+ion-select::part(radio) {
+  color: var(--light);
 }

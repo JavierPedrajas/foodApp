@@ -7,6 +7,8 @@ import React, { useState } from "react";
 import "./styles.scss";
 import { loginUser } from "utils/services";
 import LoadingSpinner from "components/LoadingSpinner";
+import { FormattedMessage } from "react-intl";
+import { useFormatMessage } from "languages/utils";
 
 interface LoginProps {
   backtoSignup: () => void;
@@ -28,7 +30,9 @@ const Login: React.FC<LoginProps> = (props) => {
   return (
     <div className={"login__signup"}>
       <LoadingSpinner open={loading} />
-      <IonText className={"login__signup__header"}>Iniciar sesión</IonText>
+      <IonText className={"login__signup__header"}>
+        <FormattedMessage id={"pages.LoginPage.Login"} />
+      </IonText>
       <div className={"login__signup__margin-bottom"}>
         <Input
           inputType="email"
@@ -42,13 +46,13 @@ const Login: React.FC<LoginProps> = (props) => {
         <Input
           inputType="password"
           handleChange={(event) => setPassword(event.target.value)}
-          placeholder="Contraseña"
+          placeholder={useFormatMessage("pages.LoginPage.Login.Password")}
           // icon={PasswordIcon}
           login
         />
         {password && password.length < 6 && (
           <IonText className={"login__signup__passwordlength"}>
-            La contraseña debe tener 6 o más caracteres
+            <FormattedMessage id={"pages.LoginPage.Login.PasswordLength"} />
           </IonText>
         )}
       </div>
@@ -62,11 +66,14 @@ const Login: React.FC<LoginProps> = (props) => {
             (password != undefined && password.length < 6)
           }
         >
-          Iniciar sesión
+          <FormattedMessage id={"pages.LoginPage.Login"} />
         </Button>
       </div>
       <IonText className={"login__signup__switch"}>
-        ¿No tienes una cuenta? <b onClick={backtoSignup}>Regístrate gratis</b>
+        <FormattedMessage id={"pages.LoginPage.Login.NoAccount"} />{" "}
+        <b onClick={backtoSignup}>
+          <FormattedMessage id={"pages.LoginPage.Signup"} />
+        </b>
       </IonText>
     </div>
   );

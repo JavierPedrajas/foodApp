@@ -1,7 +1,6 @@
 import React from "react";
 import "./styles.scss";
 
-
 const CalendarToday: React.FC = () => {
   const today = new Date().getDate();
 

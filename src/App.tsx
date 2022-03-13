@@ -39,6 +39,8 @@ import Ingredients from "pages/Ingredients";
 import Profile from "pages/Profile";
 import Config from "pages/ConfigPage";
 
+import LangContextWrapper from "context/LangContext";
+
 setupIonicReact();
 
 const App: React.FC = () => {
@@ -52,7 +54,6 @@ const App: React.FC = () => {
       if (user) {
         if (user.emailVerified) {
           setLoginStatus("logedIn");
-          console.log("logedIn");
         } else {
           setLoginStatus("notVerified");
         }
@@ -64,63 +65,64 @@ const App: React.FC = () => {
     });
   }, []);
 
-  // const getLogin = async () => {
-  //   const auxDetails = await checkLogin();
-  //   if (auxDetails) {
-  //     setLoginDetails(auxDetails);
-  //   }
-  // };
-
   if (loginStatus === "pending") {
     return (
-      <IonApp>
-        <LoadingSpinner open />
-      </IonApp>
+      <LangContextWrapper loginStatus={loginStatus}>
+        <IonApp>
+          <LoadingSpinner open />
+        </IonApp>
+      </LangContextWrapper>
     );
   }
 
   if (loginStatus === "notVerified") {
     return (
-      <IonApp>
-        <IonAlert
-          isOpen
-          onDidDismiss={logoutUser}
-          message={
-            "Tu email no ha sido verificado, por favor revisa tu bandeja de entrada"
-          }
-          buttons={[{ text: "Cerrar" }]}
-        />
-      </IonApp>
+      <LangContextWrapper loginStatus={loginStatus}>
+        <IonApp>
+          <IonAlert
+            isOpen
+            onDidDismiss={logoutUser}
+            message={
+              "Tu email no ha sido verificado, por favor revisa tu bandeja de entrada"
+            }
+            buttons={[{ text: "Cerrar" }]}
+          />
+        </IonApp>
+      </LangContextWrapper>
     );
   }
 
   if (loginStatus === "logedOut") {
     return (
-      <IonApp>
-        <IonReactRouter>
-          <LoginNavigation />
-        </IonReactRouter>
-      </IonApp>
+      <LangContextWrapper loginStatus={loginStatus}>
+        <IonApp>
+          <IonReactRouter>
+            <LoginNavigation />
+          </IonReactRouter>
+        </IonApp>
+      </LangContextWrapper>
     );
   }
 
   return (
-    <IonApp>
-      <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <SideMenu />
-          <IonRouterOutlet id="main">
-            <Route path="/tabs" component={MainTabs} />
-            <Route path="/recipes" component={Recipes} exact />
-            <Route path="/ingredients" component={Ingredients} exact />
-            <Route path="/profile" component={Profile} exact />
-            <Route path="/config" component={Config} exact />
-            <Redirect from="/" exact to="/tabs/today" />
-            <Redirect from="/login" exact to="/tabs/today" />
-          </IonRouterOutlet>
-        </IonSplitPane>
-      </IonReactRouter>
-    </IonApp>
+    <LangContextWrapper loginStatus={loginStatus}>
+      <IonApp>
+        <IonReactRouter>
+          <IonSplitPane contentId="main">
+            <SideMenu />
+            <IonRouterOutlet id="main">
+              <Route path="/tabs" component={MainTabs} />
+              <Route path="/recipes" component={Recipes} exact />
+              <Route path="/ingredients" component={Ingredients} exact />
+              <Route path="/profile" component={Profile} exact />
+              <Route path="/config" component={Config} exact />
+              <Redirect from="/" exact to="/tabs/today" />
+              <Redirect from="/login" exact to="/tabs/today" />
+            </IonRouterOutlet>
+          </IonSplitPane>
+        </IonReactRouter>
+      </IonApp>
+    </LangContextWrapper>
   );
 };
 

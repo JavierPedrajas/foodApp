@@ -8,7 +8,7 @@ interface IRecipes {}
 const Recipes: React.FC<IRecipes> = (props) => {
   return (
     <IonPage>
-      <TopBar title="Recetas" />
+      <TopBar title={"routes.SideMenu.Recipes"} />
       <IonContent fullscreen></IonContent>
     </IonPage>
   );

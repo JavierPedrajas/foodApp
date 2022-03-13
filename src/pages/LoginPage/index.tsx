@@ -12,6 +12,7 @@ import Button from "../../components/Button";
 import OnboardingSlides from "../../components/OnboardingSlides";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCarrot } from "@fortawesome/free-solid-svg-icons";
+import { FormattedMessage } from "react-intl";
 
 type TCurrentPage = "main" | "login" | "signup";
 
@@ -71,10 +72,10 @@ const LoginPage: React.FC = () => {
           </div>
           <div className="login__main__buttons">
             <Button type="main" handleClick={() => setCurrentPage("signup")}>
-              Regístrate gratis
+              <FormattedMessage id={"pages.LoginPage.Signup"} />
             </Button>
             <Button type="outlined" handleClick={() => setCurrentPage("login")}>
-              Iniciar sesión
+              <FormattedMessage id={"pages.LoginPage.Login"} />
             </Button>
           </div>
         </>

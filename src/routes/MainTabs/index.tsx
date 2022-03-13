@@ -5,9 +5,10 @@ import {
   IonTabButton,
   IonLabel,
   IonIcon,
+  NavContext,
 } from "@ionic/react";
-import React from "react";
-import { Redirect, Route } from "react-router";
+import React, { useContext } from "react";
+import { Redirect, Route, useHistory } from "react-router-dom";
 import { listRoute, scheduleRoute, todayRoute } from "..";
 import TodayPage from "../../pages/Today";
 import SchedulePage from "../../pages/Schedule";
@@ -24,7 +25,8 @@ import "./styles.scss";
 import CalendarToday from "../../components/CalendarToday";
 
 const MainTabs: React.FC = () => {
-  console.log("maintab");
+  const { navigate, routeInfo } = useContext(NavContext);
+
   return (
     <IonTabs className="tabs">
       <IonRouterOutlet>
@@ -33,17 +35,39 @@ const MainTabs: React.FC = () => {
         <Route path={listRoute} component={ListPage} exact={true} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom" className="tabs__tabBar">
-        <IonTabButton tab="tab1" href={todayRoute}>
-          {/* <FontAwesomeIcon icon={faCalendar} /> */}
-          {/* <IonIcon icon={} /> */}
-          <CalendarToday />
-          {/* <IonLabel>Hoy</IonLabel> */}
+        <IonTabButton tab="today" selected={routeInfo?.pathname === todayRoute}>
+          <div
+            className="tabs__tabBar__icon-container"
+            onClick={() => {
+              navigate(todayRoute);
+            }}
+          >
+            <CalendarToday />
+          </div>
         </IonTabButton>
-        <IonTabButton tab="tab2" href={scheduleRoute}>
-          <FontAwesomeIcon icon={faCalendarWeek} size="3x" />
+
+        <IonTabButton
+          tab="schedule"
+          selected={routeInfo?.pathname === scheduleRoute}
+        >
+          <div
+            className="tabs__tabBar__icon-container"
+            onClick={() => {
+              navigate(scheduleRoute);
+            }}
+          >
+            <FontAwesomeIcon icon={faCalendarWeek} size="3x" />
+          </div>
         </IonTabButton>
-        <IonTabButton tab="tab3" href={listRoute}>
-          <FontAwesomeIcon icon={faShoppingBasket} size="3x" />
+        <IonTabButton tab="list" selected={routeInfo?.pathname === listRoute}>
+          <div
+            className="tabs__tabBar__icon-container"
+            onClick={() => {
+              navigate(listRoute);
+            }}
+          >
+            <FontAwesomeIcon icon={faShoppingBasket} size="3x" />
+          </div>
         </IonTabButton>
       </IonTabBar>
     </IonTabs>
