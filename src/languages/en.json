@@ -10,7 +10,10 @@
   "pages.ConfigPage.Spanish": "Spanish",
   "pages.ConfigPage.English": "English",
   "modal.buttons.OK": "OK",
+  "modal.buttons.Confirm": "Confirm",
   "modal.buttons.Cancel": "Cancel",
+  "modal.buttons.Close": "Close",
+
   "pages.Ingredients.NoIngredients": "There are no ingredients added",
   "pages.Ingredients.PressHereToAdd": "Press here to add the first one!",
   "pages.LoginPage.Signup": "Sign up for free!",
@@ -24,5 +27,10 @@
   "pages.LoginPage.Signup.Completed": "Signup completed!",
   "pages.LoginPage.Signup.EmailSent": "We've sent you a confirmation email, please check your inbox and spam folder",
   "pages.LoginPage.Signup.Error": "There was an error",
-  "pages.LoginPage.Signup.EmailInUse": "This email is already in use, please log in"
+  "pages.LoginPage.Signup.EmailInUse": "This email is already in use, please log in",
+  "pages.Ingredients.Modal.Update": "Update Ingredient",
+  "pages.Ingredients.Modal.Add": "Add Ingredient",
+  "pages.Ingredients.Modal.Delete": "Delete Ingredient",
+  "pages.Ingredients.Modal.Name": "Name",
+  "pages.Ingredients.Modal.DeleteConfirm": "Are you sure you want to delete it?"
 }

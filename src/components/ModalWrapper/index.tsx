@@ -41,7 +41,9 @@ const ModalWrapper: React.FC<IModalWrapper> = (props) => {
             <FormattedMessage id={title} />
           </IonTitle>
           <IonButtons slot="end">
-            <IonButton onClick={onHandleClose}>Close</IonButton>
+            <IonButton onClick={onHandleClose}>
+              <FormattedMessage id={"modal.buttons.Close"} />
+            </IonButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
