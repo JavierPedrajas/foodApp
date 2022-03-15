@@ -1,5 +1,6 @@
 import {
   IonAlert,
+  IonButton,
   IonCheckbox,
   IonInput,
   IonModal,
@@ -143,9 +144,10 @@ const Signup: React.FC<SignupProps> = (props) => {
         </div>
       </div>
       <div className="login__signup__buttons">
-        <Button
-          type="main"
-          handleClick={signupHandler}
+        <IonButton
+          fill="solid"
+          // type="main"
+          onClick={signupHandler}
           disabled={
             !email ||
             !password ||
@@ -154,7 +156,7 @@ const Signup: React.FC<SignupProps> = (props) => {
           }
         >
           <FormattedMessage id={"pages.LoginPage.Signup"} />
-        </Button>
+        </IonButton>
       </div>
       <IonText className={"login__signup__switch"}>
         <FormattedMessage id={"pages.LoginPage.Signup.AlreadyAccount"} />{" "}

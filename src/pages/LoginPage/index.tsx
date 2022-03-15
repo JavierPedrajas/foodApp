@@ -3,7 +3,7 @@ import "./styles.scss";
 
 import { Storage } from "@capacitor/storage";
 // import OnboardingSlides from "components/OnboardingSlides";
-import { IonContent, IonImg, IonItem, IonLabel } from "@ionic/react";
+import { IonButton, IonContent, IonImg, IonItem, IonLabel } from "@ionic/react";
 // import Logo from "assets/logo/rockitt_logo-vert_white.svg";
 import Signup from "./Signup";
 // import Button from "components/Button";
@@ -71,12 +71,12 @@ const LoginPage: React.FC = () => {
             RandoMenu
           </div>
           <div className="login__main__buttons">
-            <Button type="main" handleClick={() => setCurrentPage("signup")}>
+            <IonButton fill="solid" onClick={() => setCurrentPage("signup")}>
               <FormattedMessage id={"pages.LoginPage.Signup"} />
-            </Button>
-            <Button type="outlined" handleClick={() => setCurrentPage("login")}>
+            </IonButton>
+            <IonButton fill="outline" onClick={() => setCurrentPage("login")}>
               <FormattedMessage id={"pages.LoginPage.Login"} />
-            </Button>
+            </IonButton>
           </div>
         </>
       )}

@@ -1,19 +1,14 @@
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-} from "@ionic/react";
+import { IonPage, IonContent } from "@ionic/react";
+import React from "react";
 import TopBar from "../../components/TopBar";
 
-const SchedulePage: React.FC = () => {
+const Schedule: React.FC = (props) => {
   return (
     <IonPage>
-      <TopBar logo />
+      <TopBar title={"routes.SideMenu.Schedule"} />
       <IonContent fullscreen></IonContent>
     </IonPage>
   );
 };
 
-export default SchedulePage;
+export default Schedule;

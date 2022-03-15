@@ -37,7 +37,7 @@ export const addIngredient = async (ingredient: IIngredient) => {
   const docRef = doc(firestore, "ingredients", userDoc.uid);
 
   try {
-    await updateDoc(docRef, { data: currentIngredients });
+    await updateDoc(docRef, { data: [...currentIngredients.data] });
   } catch (error) {
     console.log(error);
   }
@@ -61,7 +61,7 @@ export const updateIngredient = async (ingredient: IIngredient) => {
   const docRef = doc(firestore, "ingredients", userDoc.uid);
 
   try {
-    await updateDoc(docRef, { data: currentIngredients });
+    await updateDoc(docRef, { data: [...currentIngredients.data] });
   } catch (error) {
     console.log(error);
   }
@@ -86,7 +86,7 @@ export const deleteIngredient = async (ingredient: IIngredient) => {
   const docRef = doc(firestore, "ingredients", userDoc.uid);
 
   try {
-    await updateDoc(docRef, { data: currentIngredients });
+    await updateDoc(docRef, { data: [...currentIngredients.data] });
   } catch (error) {
     console.log(error);
   }

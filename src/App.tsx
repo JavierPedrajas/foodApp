@@ -38,6 +38,7 @@ import LoginNavigation from "routes/LoginNavigation";
 import Ingredients from "pages/Ingredients";
 import Profile from "pages/Profile";
 import Config from "pages/ConfigPage";
+import Schedule from "pages/Schedule";
 
 import LangContextWrapper from "context/LangContext";
 
@@ -114,6 +115,7 @@ const App: React.FC = () => {
               <Route path="/tabs" component={MainTabs} />
               <Route path="/recipes" component={Recipes} exact />
               <Route path="/ingredients" component={Ingredients} exact />
+              <Route path="/schedule" component={Schedule} exact />
               <Route path="/profile" component={Profile} exact />
               <Route path="/config" component={Config} exact />
               <Redirect from="/" exact to="/tabs/today" />

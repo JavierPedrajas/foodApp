@@ -2,6 +2,7 @@
   "routes.SideMenu.Home": "Home",
   "routes.SideMenu.Recipes": "Recipes",
   "routes.SideMenu.Ingredients": "Ingredients",
+  "routes.SideMenu.Schedule": "Schedule",
   "routes.SideMenu.Profile": "Profile",
   "routes.SideMenu.Configuration": "Configuration",
   "routes.SideMenu.Logout": "Logout",

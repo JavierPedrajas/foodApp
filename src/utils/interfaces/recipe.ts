@@ -6,13 +6,13 @@ export interface ITime {
 }
 
 export interface IMeal {
-  id: number;
+  id: string;
   name: string;
   time: ITime;
 }
 
 export interface IRecipe {
-  id: number;
+  id: string;
   name: string;
   ingredients: IIngredient[];
   meals: IMeal[];

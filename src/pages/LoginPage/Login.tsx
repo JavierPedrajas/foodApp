@@ -1,4 +1,4 @@
-import { IonText } from "@ionic/react";
+import { IonButton, IonText } from "@ionic/react";
 import Button from "components/Button";
 import Input from "components/Input";
 // import EmailIcon from "assets/icons/email.svg";
@@ -57,9 +57,10 @@ const Login: React.FC<LoginProps> = (props) => {
         )}
       </div>
       <div className="login__signup__buttons">
-        <Button
-          type="main"
-          handleClick={handleLogin}
+        <IonButton
+          fill="solid"
+          // type="main"
+          onClick={handleLogin}
           disabled={
             !email ||
             !password ||
@@ -67,7 +68,7 @@ const Login: React.FC<LoginProps> = (props) => {
           }
         >
           <FormattedMessage id={"pages.LoginPage.Login"} />
-        </Button>
+        </IonButton>
       </div>
       <IonText className={"login__signup__switch"}>
         <FormattedMessage id={"pages.LoginPage.Login.NoAccount"} />{" "}

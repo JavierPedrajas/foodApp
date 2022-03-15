@@ -7,9 +7,9 @@ import { getUserDoc } from "utils/services";
 const locale = navigator.language;
 let langMessages = EnglishMessages;
 
-// if (locale === "es-ES") {
-//   langMessages = SpanishMessages;
-// }
+if (locale === "es-ES") {
+  langMessages = SpanishMessages;
+}
 
 export type LangType = "es-ES" | "en-US";
 
@@ -24,11 +24,9 @@ const LangContextWrapper: React.FC<{ loginStatus: string }> = (props) => {
   const [messages, setMessages] = useState(langMessages);
 
   const getUserLang = async () => {
-    console.log("getUserLang");
     const currentUser = await getUserDoc();
     if (currentUser) {
       selectLanguage(currentUser.config.language);
-      console.log("currentUser", currentUser);
     }
   };
 

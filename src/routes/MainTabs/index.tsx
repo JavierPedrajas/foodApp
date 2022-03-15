@@ -11,7 +11,7 @@ import React, { useContext } from "react";
 import { Redirect, Route, useHistory } from "react-router-dom";
 import { listRoute, scheduleRoute, todayRoute } from "..";
 import TodayPage from "../../pages/Today";
-import SchedulePage from "../../pages/Schedule";
+import CalendarPage from "../../pages/Calendar";
 
 import { calendar, restaurant, list } from "ionicons/icons";
 import ListPage from "../../pages/List";
@@ -31,7 +31,7 @@ const MainTabs: React.FC = () => {
     <IonTabs className="tabs">
       <IonRouterOutlet>
         <Route path={todayRoute} component={TodayPage} exact={true} />
-        <Route path={scheduleRoute} component={SchedulePage} exact={true} />
+        <Route path={scheduleRoute} component={CalendarPage} exact={true} />
         <Route path={listRoute} component={ListPage} exact={true} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom" className="tabs__tabBar">
