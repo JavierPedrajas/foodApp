@@ -8,6 +8,7 @@ import {
 import { createOutline } from "ionicons/icons";
 import React from "react";
 import { IIngredient } from "utils/interfaces";
+import "./styles.scss";
 
 interface IIngredientItem {
   ingredient: IIngredient;
@@ -17,7 +18,7 @@ interface IIngredientItem {
 const IngredientItem: React.FC<IIngredientItem> = (props) => {
   const { ingredient, onHandleEdit } = props;
   return (
-    <IonItem>
+    <IonItem className="ingredient-item">
       <IonLabel color="light">{ingredient.name}</IonLabel>
       <IonButtons slot="end">
         <IonButton onClick={() => onHandleEdit(ingredient)}>
