@@ -1,4 +1,4 @@
-import { deleteDoc, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { IIngredient, IIngredientList } from "utils/interfaces";
 import { firestore, getUserDoc } from "utils/services";
 
