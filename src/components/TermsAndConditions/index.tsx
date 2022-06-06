@@ -1,3 +1,4 @@
+import { IonButton } from "@ionic/react";
 import Button from "components/Button";
 import React from "react";
 import "./styles.scss";
@@ -53,11 +54,11 @@ const TermsAndConditions: React.FC<{
       <h4> Licencia: </h4>{" "}
       <p>
         {" "}
-        A menos que se indique lo contrario, RandoMenu y/o sus licenciantes poseen
-        los derechos de propiedad intelectual de todo el material en RandoMenu.
-        Todos los derechos de propiedad intelectual son reservados. Puedes
-        acceder desde RandoMenu para tu uso personal sujeto a las restricciones
-        establecidas en estos términos y condiciones.{" "}
+        A menos que se indique lo contrario, RandoMenu y/o sus licenciantes
+        poseen los derechos de propiedad intelectual de todo el material en
+        RandoMenu. Todos los derechos de propiedad intelectual son reservados.
+        Puedes acceder desde RandoMenu para tu uso personal sujeto a las
+        restricciones establecidas en estos términos y condiciones.{" "}
       </p>{" "}
       <p> No debes: </p>{" "}
       <ul>
@@ -72,8 +73,8 @@ const TermsAndConditions: React.FC<{
         {" "}
         Partes de este sitio web ofrecen a los usuarios la oportunidad de
         publicar e intercambiar opiniones e información en determinadas áreas.
-        RandoMenu no filtra, edita, publica ni revisa los comentarios antes de su
-        presencia en el sitio web. Los comentarios no reflejan los puntos de
+        RandoMenu no filtra, edita, publica ni revisa los comentarios antes de
+        su presencia en el sitio web. Los comentarios no reflejan los puntos de
         vista ni las opiniones de RandoMenu, sus agentes y/o afiliados. Los
         comentarios reflejan los puntos de vista y opiniones de la persona que
         publica. En la medida en que lo permitan las leyes aplicables, RandoMenu
@@ -116,8 +117,8 @@ const TermsAndConditions: React.FC<{
       </ul>{" "}
       <p>
         {" "}
-        Por la presente, otorgas a RandoMenu una licencia no exclusiva para usar,
-        reproducir, editar y autorizar a otros a usar, reproducir y editar
+        Por la presente, otorgas a RandoMenu una licencia no exclusiva para
+        usar, reproducir, editar y autorizar a otros a usar, reproducir y editar
         cualquiera de tus comentarios en todas y cada una de las formas,
         formatos, o medios.{" "}
       </p>{" "}
@@ -310,12 +311,12 @@ const TermsAndConditions: React.FC<{
         pérdida o daño de cualquier naturaleza.{" "}
       </p>
       <div className="terms__buttons">
-        <Button type="main" handleClick={onConfirm}>
+        <IonButton fill="solid" onClick={onConfirm}>
           Aceptar
-        </Button>
-        <Button type="outlined" handleClick={onReject}>
+        </IonButton>
+        <IonButton fill="outline" onClick={onReject}>
           Cancelar
-        </Button>
+        </IonButton>
       </div>
     </div>
   );

@@ -30,9 +30,8 @@ export const logoutUser = async () => {
 
 export const getUserDoc = async () => {
   const logedUser = firebaseAuth.currentUser;
-  console.log("logedUser", logedUser);
   if (logedUser) {
-    const docRef = doc(firestore, "usuarios", logedUser.uid);
+    const docRef = doc(firestore, "users", logedUser.uid);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       console.log("docSnap", docSnap.data());
@@ -48,9 +47,20 @@ export const getUserDoc = async () => {
 export const addUser = async (usuario: IUser) => {
   const logedUser = firebaseAuth.currentUser;
   if (logedUser) {
-    const docRef = doc(firestore, "usuarios", logedUser.uid);
+    const userDocRef = doc(firestore, "users", logedUser.uid);
+    const ingredientsDocRef = doc(firestore, "ingredients", logedUser.uid);
+    const recipesDocRef = doc(firestore, "recipes", logedUser.uid);
+    const scheduleDocRef = doc(firestore, "schedule", logedUser.uid);
+    const calendarDocRef = doc(firestore, "calendar", logedUser.uid);
+    const groceriesDocRef = doc(firestore, "groceries", logedUser.uid);
+
     try {
-      await setDoc(docRef, usuario);
+      await setDoc(userDocRef, usuario);
+      await setDoc(ingredientsDocRef, { data: [] });
+      await setDoc(recipesDocRef, { data: [] });
+      await setDoc(scheduleDocRef, { data: [] });
+      await setDoc(calendarDocRef, { data: [] });
+      await setDoc(groceriesDocRef, { data: [] });
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +68,7 @@ export const addUser = async (usuario: IUser) => {
 };
 
 export const updateUser = async (usuario: IUser) => {
-  const docRef = doc(firestore, "usuarios", usuario.uid);
+  const docRef = doc(firestore, "users", usuario.uid);
   try {
     await updateDoc(docRef, { ...usuario });
   } catch (error) {

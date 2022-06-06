@@ -1,8 +1,8 @@
 export interface IIngredient {
-  id: number;
+  id: string;
   name: string;
 }
 
 export interface IIngredientList {
-  data: IIngredient[]
+  data: IIngredient[];
 }

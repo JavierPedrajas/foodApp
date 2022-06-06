@@ -31,9 +31,7 @@ const MealItem: React.FC<IMealItem> = (props) => {
   }
 
   return (
-    <div
-      className={`mealItem ${type}`}
-    >
+    <div className={`mealItem ${type}`}>
       <div className="mealItem__meal">{meal.name}</div>
       <div className="mealItem__recipe">
         {recipe ? recipe.name : "Recipe not found"}

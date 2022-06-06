@@ -1,5 +1,7 @@
 import {
+  faCalendarCheck,
   faCarrot,
+  faClock,
   faCog,
   faHamburger,
   faHome,
@@ -29,6 +31,11 @@ export const MenuItemList: IMenuItem[] = [
     title: "routes.SideMenu.Ingredients",
     link: "/ingredients",
     icon: faCarrot,
+  },
+  {
+    title: "routes.SideMenu.Schedule",
+    link: "/schedule",
+    icon: faClock,
   },
   {
     title: "routes.SideMenu.Profile",

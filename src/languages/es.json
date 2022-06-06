@@ -2,6 +2,7 @@
   "routes.SideMenu.Home": "Inicio",
   "routes.SideMenu.Recipes": "Recetas",
   "routes.SideMenu.Ingredients": "Ingredientes",
+  "routes.SideMenu.Schedule": "Horarios",
   "routes.SideMenu.Profile": "Perfil",
   "routes.SideMenu.Configuration": "Configuración",
   "routes.SideMenu.Logout": "Cerrar sesión",
@@ -9,7 +10,9 @@
   "pages.ConfigPage.Spanish": "Español",
   "pages.ConfigPage.English": "Inglés",
   "modal.buttons.OK": "OK",
+  "modal.buttons.Confirm": "Confirmar",
   "modal.buttons.Cancel": "Cancelar",
+  "modal.buttons.Close": "Cerrar",
   "pages.Ingredients.NoIngredients": "Todavía no has añadido ningún ingrediente",
   "pages.Ingredients.PressHereToAdd": "¡Pulsa aquí para añadir el primero!",
   "pages.LoginPage.Signup": "¡Regístrate gratis!",
@@ -23,5 +26,10 @@
   "pages.LoginPage.Signup.Completed": "Registro completado!",
   "pages.LoginPage.Signup.EmailSent": "Te hemos enviado un email de confirmación, por favor revisa tu bandeja de entrada y spam",
   "pages.LoginPage.Signup.Error": "Ha habido un error",
-  "pages.LoginPage.Signup.EmailInUse": "Este email ya está en uso, por favor inicia sesión"
+  "pages.LoginPage.Signup.EmailInUse": "Este email ya está en uso, por favor inicia sesión",
+  "pages.Ingredients.Modal.Update": "Actualizar Ingrediente",
+  "pages.Ingredients.Modal.Add": "Añadir Ingrediente",
+  "pages.Ingredients.Modal.Delete": "Eliminar Ingrediente",
+  "pages.Ingredients.Modal.Name": "Nombre",
+  "pages.Ingredients.Modal.DeleteConfirm": "¿Estás seguro de que quieres eliminarlo?"
 }
