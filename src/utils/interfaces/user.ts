@@ -1,5 +1,5 @@
 import { LangType } from "context/LangContext";
-import { IIngredient, IMeal, IRecipe, TCalendar } from ".";
+import { IIngredient, ISchedule, IRecipe, TCalendar } from ".";
 
 export interface IUser {
   uid: string;

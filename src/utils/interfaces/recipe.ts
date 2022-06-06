@@ -5,7 +5,7 @@ export interface ITime {
   minutes: number;
 }
 
-export interface IMeal {
+export interface ISchedule {
   id: string;
   name: string;
   time: ITime;
@@ -15,5 +15,5 @@ export interface IRecipe {
   id: string;
   name: string;
   ingredients: IIngredient[];
-  meals: IMeal[];
+  schedules: ISchedule[];
 }

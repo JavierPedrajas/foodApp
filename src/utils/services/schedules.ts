@@ -1,10 +1,10 @@
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { IIngredient } from "utils/interfaces";
+import { ISchedule } from "utils/interfaces";
 import { firestore, getUserDoc } from "utils/services";
 
-const APIRef = "ingredients";
+const APIRef = "schedule";
 
-export const getIngredients = async () => {
+export const getSchedules = async () => {
   const userDoc = await getUserDoc();
   if (!userDoc) {
     return;
@@ -15,7 +15,7 @@ export const getIngredients = async () => {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       const docData = docSnap.data();
-      return docData.data as IIngredient[];
+      return docData.data as ISchedule[];
     } else {
       // doc.data() will be undefined in this case
       console.log("No such document!");
@@ -23,72 +23,72 @@ export const getIngredients = async () => {
   } catch (error) {}
 };
 
-export const addIngredient = async (ingredient: IIngredient) => {
+export const addSchedule = async (schedule: ISchedule) => {
   const userDoc = await getUserDoc();
   if (!userDoc) {
     return;
   }
 
-  const currentIngredients = await getIngredients();
-  if (!currentIngredients) {
+  const currentSchedules = await getSchedules();
+  if (!currentSchedules) {
     return;
   }
 
-  currentIngredients.push(ingredient);
+  currentSchedules.push(schedule);
 
   const docRef = doc(firestore, APIRef, userDoc.uid);
 
   try {
-    await updateDoc(docRef, { data: [...currentIngredients] });
+    await updateDoc(docRef, { data: [...currentSchedules] });
   } catch (error) {
     console.log(error);
   }
 };
 
-export const updateIngredient = async (ingredient: IIngredient) => {
+export const updateSchedule = async (schedule: ISchedule) => {
   const userDoc = await getUserDoc();
   if (!userDoc) {
     return;
   }
-  const currentIngredients = await getIngredients();
-  if (!currentIngredients) {
+  const currentSchedules = await getSchedules();
+  if (!currentSchedules) {
     return;
   }
 
-  const updateIndex = currentIngredients.findIndex(
-    (ings) => ings.id === ingredient.id
+  const updateIndex = currentSchedules.findIndex(
+    (ings) => ings.id === schedule.id
   );
-  currentIngredients[updateIndex] = ingredient;
+  currentSchedules[updateIndex] = schedule;
 
   const docRef = doc(firestore, APIRef, userDoc.uid);
 
   try {
-    await updateDoc(docRef, { data: [...currentIngredients] });
+    await updateDoc(docRef, { data: [...currentSchedules] });
   } catch (error) {
     console.log(error);
   }
 };
 
-export const deleteIngredient = async (ingredient: IIngredient) => {
+export const deleteSchedules = async (schedule: ISchedule) => {
   const userDoc = await getUserDoc();
   if (!userDoc) {
     return;
   }
 
-  const currentIngredients = await getIngredients();
-  if (!currentIngredients) {
+  const currentSchedule = await getSchedules();
+  if (!currentSchedule) {
     return;
   }
 
-  const removeIndex = currentIngredients.findIndex(
-    (ings) => ings.id === ingredient.id
+  const removeIndex = currentSchedule.findIndex(
+    (ings) => ings.id === schedule.id
   );
-  currentIngredients.splice(removeIndex, 1);
+  currentSchedule.splice(removeIndex, 1);
 
   const docRef = doc(firestore, APIRef, userDoc.uid);
 
   try {
-    await updateDoc(docRef, { data: [...currentIngredients] });
+    await updateDoc(docRef, { data: [...currentSchedule] });
   } catch (error) {
     console.log(error);
   }

@@ -1,4 +1,4 @@
-import { IMeal, IRecipe } from ".";
+import { ISchedule, IRecipe } from ".";
 
 export interface IMealCalendar {
   mealId: string;
