@@ -3,6 +3,6 @@ export interface IIngredient {
   name: string;
 }
 
-export interface IIngredientList {
-  data: IIngredient[];
+export interface IIngredientDict {
+  [key: string]: IIngredient;
 }

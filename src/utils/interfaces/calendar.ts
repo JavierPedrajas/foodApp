@@ -1,13 +1,16 @@
-import { IMeal, IRecipe } from ".";
+import { ISchedule, IRecipe } from ".";
 
 export interface IMealCalendar {
-  mealId: string;
+  scheduleId: string;
   recipeId: string;
 }
 
 export interface IDay {
+  id: string;
   date: string;
   meals: IMealCalendar[];
 }
 
-export type TCalendar = IDay[];
+export interface ICalendarDict {
+  [key: string]: IDay;
+}
