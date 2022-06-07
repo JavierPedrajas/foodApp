@@ -12,7 +12,7 @@ const TodayPage: React.FC = () => {
         {today.meals.map((item, index, array) => {
           let type: "future" | "prev" | "next" = "future";
           const now = new Date().getTime();
-          const meal = meals.find((meal) => meal.id === item.mealId);
+          const meal = meals.find((meal) => meal.id === item.scheduleId);
           if (!meal) {
             return;
           }
@@ -26,7 +26,7 @@ const TodayPage: React.FC = () => {
             if (index !== 0) {
               const prevMealCalendar = array[index - 1];
               const prevMeal = meals.find(
-                (meal) => meal.id === prevMealCalendar.mealId
+                (meal) => meal.id === prevMealCalendar.scheduleId
               );
               if (!prevMeal) {
                 return;
@@ -43,7 +43,7 @@ const TodayPage: React.FC = () => {
             }
           }
 
-          return <MealItem mealInfo={item} type={type} key={item.mealId} />;
+          return <MealItem mealInfo={item} type={type} key={item.scheduleId} />;
         })}
       </IonContent>
     </IonPage>

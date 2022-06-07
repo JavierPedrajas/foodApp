@@ -1,4 +1,4 @@
-import { LangType } from "Utils/Context/LangContext";
+import { LangType } from "Context/LangContext";
 
 export interface IUser {
   uid: string;

@@ -1,19 +1,13 @@
 import { IIngredient } from ".";
-
-export interface ITime {
-  hour: number;
-  minutes: number;
-}
-
-export interface IMeal {
-  id: string;
-  name: string;
-  time: ITime;
-}
+import { ISchedule } from "./schedules";
 
 export interface IRecipe {
   id: string;
   name: string;
   ingredients: IIngredient[];
-  meals: IMeal[];
+  schedules: ISchedule[];
+}
+
+export interface IRecipeDict {
+  [key: string]: IRecipe;
 }

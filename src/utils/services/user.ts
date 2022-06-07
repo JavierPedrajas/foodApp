@@ -56,11 +56,11 @@ export const addUser = async (usuario: IUser) => {
 
     try {
       await setDoc(userDocRef, usuario);
-      await setDoc(ingredientsDocRef, { data: [] });
-      await setDoc(recipesDocRef, { data: [] });
-      await setDoc(scheduleDocRef, { data: [] });
-      await setDoc(calendarDocRef, { data: [] });
-      await setDoc(groceriesDocRef, { data: [] });
+      await setDoc(ingredientsDocRef, { data: {} });
+      await setDoc(recipesDocRef, { data: {} });
+      await setDoc(scheduleDocRef, { data: {} });
+      await setDoc(calendarDocRef, { data: {} });
+      await setDoc(groceriesDocRef, { data: {} });
     } catch (error) {
       console.log(error);
     }
