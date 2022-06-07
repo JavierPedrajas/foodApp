@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { meals, recipes } from "../../dummy";
-import { ISchedule, IMealCalendar, IRecipe } from "../../utils/interfaces";
+import { meals, recipes } from "dummy";
+import { ISchedule, IMealCalendar, IRecipe } from "lib/interfaces";
 import "./styles.scss";
 
 interface IMealItem {
@@ -19,10 +19,10 @@ const MealItem: React.FC<IMealItem> = (props) => {
       return;
     }
 
-    const newMeal = meals.find((meal) => meal.id === mealInfo.scheduleId);
+    const newMeal = meals[mealInfo.scheduleId];
     setMeal(newMeal);
 
-    const newRecipe = recipes.find((recipe) => recipe.id === mealInfo.recipeId);
+    const newRecipe = recipes[mealInfo.scheduleId];
     setRecipe(newRecipe);
   }, [mealInfo]);
 

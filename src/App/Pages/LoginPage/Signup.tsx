@@ -6,16 +6,16 @@ import {
   IonModal,
   IonText,
 } from "@ionic/react";
-import Button from "App/Components/Button";
-import Input from "App/Components/Input";
+import Button from "app/components/Button";
+import Input from "app/components/Input";
 import React, { useEffect, useState } from "react";
 // import EmailIcon from "assets/icons/email.svg";
 // import PasswordIcon from "assets/icons/password.svg";
-import TermsAndConditions from "App/Components/TermsAndConditions";
-import { addUser, sendVerificationEmail, signupNewUser } from "Utils/Services";
-import LoadingSpinner from "App/Components/LoadingSpinner";
+import TermsAndConditions from "app/components/TermsAndConditions";
+import { addUser, sendVerificationEmail, signupNewUser } from "lib/services";
+import LoadingSpinner from "app/components/LoadingSpinner";
 import { FormattedMessage } from "react-intl";
-import { useFormatMessage } from "Langs/utils";
+import { useFormatMessage } from "langs/utils";
 
 interface SignupProps {
   backToLogin: () => void;

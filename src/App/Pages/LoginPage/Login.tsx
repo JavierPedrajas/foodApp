@@ -1,14 +1,13 @@
 import { IonButton, IonText } from "@ionic/react";
-import Button from "App/Components/Button";
-import Input from "App/Components/Input";
+import Input from "app/components/Input";
 // import EmailIcon from "assets/icons/email.svg";
 // import PasswordIcon from "assets/icons/password.svg";
 import React, { useState } from "react";
 import "./styles.scss";
-import { loginUser } from "Utils/Services";
-import LoadingSpinner from "App/Components/LoadingSpinner";
+import { loginUser } from "lib/services";
+import LoadingSpinner from "app/components/LoadingSpinner";
 import { FormattedMessage } from "react-intl";
-import { useFormatMessage } from "Langs/utils";
+import { useFormatMessage } from "langs/utils";
 
 interface LoginProps {
   backtoSignup: () => void;

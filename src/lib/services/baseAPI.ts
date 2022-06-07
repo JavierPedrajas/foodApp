@@ -1,5 +1,12 @@
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { firestore, getUserDoc } from "utils/services";
+import { firestore, getUserDoc } from "lib/services";
+
+export const USERS_API = "users";
+export const INGREDIENTS_API = "ingredients";
+export const SCHEDULES_API = "schedules";
+export const RECIPES_API = "recipes";
+export const CALENDARS_API = "calendars";
+export const GROCERIES_API = "groceries";
 
 export const getItems = async (APIRef: string) => {
   const userDoc = await getUserDoc();
@@ -37,6 +44,7 @@ export const addItem = async (APIRef: string, item: any) => {
 
   try {
     await updateDoc(docRef, { data: currentItems });
+    return currentItems;
   } catch (error) {
     console.log(error);
   }
@@ -58,6 +66,7 @@ export const updateItem = async (APIRef: string, item: any) => {
 
   try {
     await updateDoc(docRef, { data: currentItems });
+    return currentItems;
   } catch (error) {
     console.log(error);
   }
@@ -80,6 +89,7 @@ export const deleteItem = async (APIRef: string, item: any) => {
 
   try {
     await updateDoc(docRef, { data: currentItems });
+    return currentItems;
   } catch (error) {
     console.log(error);
   }

@@ -7,7 +7,7 @@ import {
 } from "@ionic/react";
 import { createOutline } from "ionicons/icons";
 import React from "react";
-import { IIngredient } from "Utils/Interfaces";
+import { IIngredient } from "lib/interfaces";
 import "./styles.scss";
 
 interface IIngredientItem {

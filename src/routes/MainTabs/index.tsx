@@ -8,10 +8,10 @@ import {
 import React, { useContext } from "react";
 import { Route } from "react-router-dom";
 import { listRoute, scheduleRoute, todayRoute } from "..";
-import TodayPage from "../../App/Pages/Today";
-import CalendarPage from "../../App/Pages/Calendar";
+import TodayPage from "../../app/pages/Today";
+import CalendarPage from "../../app/pages/Calendar";
 
-import ListPage from "../../App/Pages/List";
+import ListPage from "../../app/pages/List";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -19,7 +19,7 @@ import {
   faShoppingBasket,
 } from "@fortawesome/free-solid-svg-icons";
 import "./styles.scss";
-import CalendarToday from "../../App/Components/CalendarToday";
+import CalendarToday from "../../app/components/CalendarToday";
 
 const MainTabs: React.FC = () => {
   const { navigate, routeInfo } = useContext(NavContext);

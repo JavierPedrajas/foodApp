@@ -1,7 +1,7 @@
 import { IonPage, IonContent } from "@ionic/react";
 import React from "react";
-import TopBar from "../../Components/TopBar";
-import MainTabs from "../../../Routes/MainTabs";
+import TopBar from "../../components/TopBar";
+import MainTabs from "../../../routes/mainTabs";
 
 interface IRecipes {}
 

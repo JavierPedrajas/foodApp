@@ -5,7 +5,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import TopBar from "../../Components/TopBar";
+import TopBar from "../../components/TopBar";
 
 const CalendarPage: React.FC = () => {
   return (

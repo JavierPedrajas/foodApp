@@ -14,30 +14,31 @@ import {
   IonPage,
   IonTitle,
 } from "@ionic/react";
-import LoadingSpinner from "App/Components/LoadingSpinner";
-import ModalWrapper from "App/Components/ModalWrapper";
-import TopBar from "App/Components/TopBar";
+import LoadingSpinner from "app/components/LoadingSpinner";
+import ModalWrapper from "app/components/ModalWrapper";
+import TopBar from "app/components/TopBar";
 import { add } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { IIngredient } from "Utils/Interfaces";
+import { IIngredient } from "lib/interfaces";
 import {
+  getIngredients,
   addIngredient,
   deleteIngredient,
-  getIngredients,
   updateIngredient,
-} from "Utils/Services/ingredients";
+  selectIsLoadingIngredients,
+} from "lib/store/ingredientsSlice";
 import "./styles.scss";
 
 import { v4 as uuidv4 } from "uuid";
-import IngredientItem from "App/Components/IngredientItem";
-import { useFormatMessage } from "Langs/utils";
+import IngredientItem from "app/components/IngredientItem";
+import { useFormatMessage } from "langs/utils";
+import { useAppDispatch, useAppSelector } from "lib/hooks/store";
+import { selectIngredients } from "lib/store/ingredientsSlice";
 
 interface IIngredients {}
 
 const Ingredients: React.FC<IIngredients> = (props) => {
-  const [ingredients, setIngredients] = useState<IIngredient[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [ingredientName, setIngredientName] = useState<string>("");
@@ -45,24 +46,21 @@ const Ingredients: React.FC<IIngredients> = (props) => {
 
   const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
 
+  const dispatch = useAppDispatch();
+  const ingredients = useAppSelector(selectIngredients);
+  const isLoading = useAppSelector(selectIsLoadingIngredients);
+
   const fetchIngredients = async () => {
-    const ingredientsList = await getIngredients();
-    if (ingredientsList) {
-      setIngredients(ingredientsList.data);
-    }
-    setIsLoading(false);
+    await dispatch(getIngredients());
   };
 
   const onAddIngredient = async () => {
-    setIsLoading(true);
-
     if (ingredientName !== "") {
       const newIngredient: IIngredient = {
         name: ingredientName,
         id: uuidv4(),
       };
-      await addIngredient(newIngredient);
-      await fetchIngredients();
+      await dispatch(addIngredient(newIngredient));
     }
     onCloseModal();
   };
@@ -80,14 +78,12 @@ const Ingredients: React.FC<IIngredients> = (props) => {
   };
 
   const onUpdateIngredient = async () => {
-    setIsLoading(true);
     if (selectedIngredient && ingredientName !== "") {
       const newIngredient: IIngredient = {
         name: ingredientName,
         id: selectedIngredient.id,
       };
-      await updateIngredient(newIngredient);
-      await fetchIngredients();
+      await dispatch(updateIngredient(newIngredient));
     }
     onCloseModal();
   };
@@ -97,16 +93,16 @@ const Ingredients: React.FC<IIngredients> = (props) => {
   };
 
   const onDeleteIngredient = async () => {
-    setIsLoading(true);
     if (selectedIngredient) {
-      await deleteIngredient(selectedIngredient);
-      await fetchIngredients();
+      await dispatch(deleteIngredient(selectedIngredient));
     }
     onCloseModal();
   };
 
   useEffect(() => {
-    fetchIngredients();
+    if (Object.keys(ingredients).length === 0) {
+      fetchIngredients();
+    }
   }, []);
 
   return (
@@ -167,11 +163,12 @@ const Ingredients: React.FC<IIngredients> = (props) => {
       <LoadingSpinner open={isLoading} />
       <TopBar title="routes.SideMenu.Ingredients" />
       <IonContent fullscreen className="ingredients">
-        {ingredients.length > 0 ? (
+        {Object.keys(ingredients).length > 0 ? (
           <>
             <IonList>
-              {ingredients.map((ing) => (
+              {Object.values(ingredients).map((ing) => (
                 <IngredientItem
+                  key={ing.id}
                   ingredient={ing}
                   onHandleEdit={onEditIngredient}
                 />

@@ -6,7 +6,15 @@ import {
 } from "firebase/auth";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { firebaseAuth, firestore } from ".";
-import { IUser } from "Utils/Interfaces/user";
+import { IUser } from "lib/interfaces/user";
+import {
+  CALENDARS_API,
+  GROCERIES_API,
+  INGREDIENTS_API,
+  RECIPES_API,
+  SCHEDULES_API,
+  USERS_API,
+} from "lib/services/baseAPI";
 
 export const signupNewUser = async (email: string, password: string) => {
   return createUserWithEmailAndPassword(firebaseAuth, email, password);
@@ -31,10 +39,9 @@ export const logoutUser = async () => {
 export const getUserDoc = async () => {
   const logedUser = firebaseAuth.currentUser;
   if (logedUser) {
-    const docRef = doc(firestore, "users", logedUser.uid);
+    const docRef = doc(firestore, USERS_API, logedUser.uid);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      console.log("docSnap", docSnap.data());
       const docData = docSnap.data() as IUser;
       return docData;
     } else {
@@ -47,19 +54,19 @@ export const getUserDoc = async () => {
 export const addUser = async (usuario: IUser) => {
   const logedUser = firebaseAuth.currentUser;
   if (logedUser) {
-    const userDocRef = doc(firestore, "users", logedUser.uid);
-    const ingredientsDocRef = doc(firestore, "ingredients", logedUser.uid);
-    const recipesDocRef = doc(firestore, "recipes", logedUser.uid);
-    const scheduleDocRef = doc(firestore, "schedule", logedUser.uid);
-    const calendarDocRef = doc(firestore, "calendar", logedUser.uid);
-    const groceriesDocRef = doc(firestore, "groceries", logedUser.uid);
+    const userDocRef = doc(firestore, USERS_API, logedUser.uid);
+    const ingredientsDocRef = doc(firestore, INGREDIENTS_API, logedUser.uid);
+    const recipesDocRef = doc(firestore, RECIPES_API, logedUser.uid);
+    const schedulesDocRef = doc(firestore, SCHEDULES_API, logedUser.uid);
+    const calendarsDocRef = doc(firestore, CALENDARS_API, logedUser.uid);
+    const groceriesDocRef = doc(firestore, GROCERIES_API, logedUser.uid);
 
     try {
       await setDoc(userDocRef, usuario);
       await setDoc(ingredientsDocRef, { data: {} });
       await setDoc(recipesDocRef, { data: {} });
-      await setDoc(scheduleDocRef, { data: {} });
-      await setDoc(calendarDocRef, { data: {} });
+      await setDoc(schedulesDocRef, { data: {} });
+      await setDoc(calendarsDocRef, { data: {} });
       await setDoc(groceriesDocRef, { data: {} });
     } catch (error) {
       console.log(error);
@@ -68,7 +75,7 @@ export const addUser = async (usuario: IUser) => {
 };
 
 export const updateUser = async (usuario: IUser) => {
-  const docRef = doc(firestore, "users", usuario.uid);
+  const docRef = doc(firestore, USERS_API, usuario.uid);
   try {
     await updateDoc(docRef, { ...usuario });
   } catch (error) {

@@ -1,6 +1,6 @@
 import { IonPage, IonContent } from "@ionic/react";
 import React from "react";
-import TopBar from "../../Components/TopBar";
+import TopBar from "../../components/TopBar";
 
 interface IListPage {}
 

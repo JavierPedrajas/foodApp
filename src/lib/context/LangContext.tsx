@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { IntlProvider } from "react-intl";
-import SpanishMessages from "Langs/es.json";
-import EnglishMessages from "Langs/en.json";
-import { getUserDoc } from "Utils/Services";
+import SpanishMessages from "langs/es.json";
+import EnglishMessages from "langs/en.json";
+import { getUserDoc } from "lib/services";
 
 const locale = navigator.language;
 let langMessages = EnglishMessages;

@@ -3,13 +3,12 @@ import "./styles.scss";
 
 import { Storage } from "@capacitor/storage";
 // import OnboardingSlides from "components/OnboardingSlides";
-import { IonButton, IonContent, IonImg, IonItem, IonLabel } from "@ionic/react";
+import { IonButton } from "@ionic/react";
 // import Logo from "assets/logo/rockitt_logo-vert_white.svg";
 import Signup from "./Signup";
 // import Button from "components/Button";
 import Login from "./Login";
-import Button from "../../Components/Button";
-import OnboardingSlides from "../../Components/OnboardingSlides";
+import OnboardingSlides from "app/components/OnboardingSlides";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCarrot } from "@fortawesome/free-solid-svg-icons";
 import { FormattedMessage } from "react-intl";

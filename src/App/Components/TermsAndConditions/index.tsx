@@ -1,5 +1,5 @@
 import { IonButton } from "@ionic/react";
-import Button from "App/Components/Button";
+import Button from "app/components/Button";
 import React from "react";
 import "./styles.scss";
 

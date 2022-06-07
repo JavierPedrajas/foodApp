@@ -1,5 +1,5 @@
 import { IonContent, IonPage } from "@ionic/react";
-import TopBar from "App/Components/TopBar";
+import TopBar from "app/components/TopBar";
 import React from "react";
 import "./styles.scss";
 

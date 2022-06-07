@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IonItem, IonIcon, IonLabel, NavContext } from "@ionic/react";
 import React, { useContext } from "react";
 import { FormattedMessage } from "react-intl";
-import { logoutUser } from "Utils/Services";
+import { logoutUser } from "lib/services";
 import "./styles.scss";
 
 interface IMenuItem {

@@ -25,22 +25,24 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
 /* Theme variables */
-import "./theme/variables.css";
-import MainTabs from "../Routes/MainTabs";
-import SideMenu from "../Routes/SideMenu";
-import Recipes from "./Pages/Recipes";
-import "./theme/styles.scss";
-import { firebaseAuth, logoutUser } from "../Utils/Services";
+import "lib/theme/variables.css";
+import MainTabs from "../routes/mainTabs";
+import SideMenu from "../routes/sideMenu";
+import Recipes from "./pages/Recipes";
+import "lib/theme/styles.scss";
+import { firebaseAuth, logoutUser } from "../lib/services";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, User } from "firebase/auth";
-import LoadingSpinner from "./Components/LoadingSpinner";
-import LoginNavigation from "Routes/LoginNavigation";
-import Ingredients from "App/Pages/Ingredients";
-import Profile from "App/Pages/Profile";
-import Config from "App/Pages/ConfigPage";
-import Schedule from "App/Pages/Schedule";
+import LoadingSpinner from "./components/LoadingSpinner";
+import LoginNavigation from "routes/loginNavigation";
+import Ingredients from "app/pages/Ingredients";
+import Profile from "app/pages/Profile";
+import Config from "app/pages/ConfigPage";
+import Schedule from "app/pages/Schedule";
 
-import LangContextWrapper from "Utils/Context/LangContext";
+import LangContextWrapper from "lib/context/LangContext";
+import { Provider } from "react-redux";
+import { store } from "lib/store";
 
 setupIonicReact();
 
@@ -106,25 +108,27 @@ const App: React.FC = () => {
   }
 
   return (
-    <LangContextWrapper loginStatus={loginStatus}>
-      <IonApp>
-        <IonReactRouter>
-          <IonSplitPane contentId="main">
-            <SideMenu />
-            <IonRouterOutlet id="main">
-              <Route path="/tabs" component={MainTabs} />
-              <Route path="/recipes" component={Recipes} exact />
-              <Route path="/ingredients" component={Ingredients} exact />
-              <Route path="/schedule" component={Schedule} exact />
-              <Route path="/profile" component={Profile} exact />
-              <Route path="/config" component={Config} exact />
-              <Redirect from="/" exact to="/tabs/today" />
-              <Redirect from="/login" exact to="/tabs/today" />
-            </IonRouterOutlet>
-          </IonSplitPane>
-        </IonReactRouter>
-      </IonApp>
-    </LangContextWrapper>
+    <Provider store={store}>
+      <LangContextWrapper loginStatus={loginStatus}>
+        <IonApp>
+          <IonReactRouter>
+            <IonSplitPane contentId="main">
+              <SideMenu />
+              <IonRouterOutlet id="main">
+                <Route path="/tabs" component={MainTabs} />
+                <Route path="/recipes" component={Recipes} exact />
+                <Route path="/ingredients" component={Ingredients} exact />
+                <Route path="/schedule" component={Schedule} exact />
+                <Route path="/profile" component={Profile} exact />
+                <Route path="/config" component={Config} exact />
+                <Redirect from="/" exact to="/tabs/today" />
+                <Redirect from="/login" exact to="/tabs/today" />
+              </IonRouterOutlet>
+            </IonSplitPane>
+          </IonReactRouter>
+        </IonApp>
+      </LangContextWrapper>
+    </Provider>
   );
 };
 

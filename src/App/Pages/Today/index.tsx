@@ -1,6 +1,6 @@
 import { IonContent, IonPage } from "@ionic/react";
-import MealItem from "../../Components/MealItem";
-import TopBar from "../../Components/TopBar";
+import MealItem from "../../components/MealItem";
+import TopBar from "../../components/TopBar";
 import { meals, today } from "../../../dummy";
 import "./styles.scss";
 
@@ -12,9 +12,9 @@ const TodayPage: React.FC = () => {
         {today.meals.map((item, index, array) => {
           let type: "future" | "prev" | "next" = "future";
           const now = new Date().getTime();
-          const meal = meals.find((meal) => meal.id === item.scheduleId);
+          const meal = meals[item.scheduleId];
           if (!meal) {
-            return;
+            return null;
           }
           const currentMealTime = new Date(
             new Date().setHours(meal.time.hour, meal?.time.minutes)
@@ -25,11 +25,9 @@ const TodayPage: React.FC = () => {
           } else {
             if (index !== 0) {
               const prevMealCalendar = array[index - 1];
-              const prevMeal = meals.find(
-                (meal) => meal.id === prevMealCalendar.scheduleId
-              );
+              const prevMeal = meals[prevMealCalendar.scheduleId];
               if (!prevMeal) {
-                return;
+                return null;
               }
               const prevMealTime = new Date(
                 new Date().setHours(prevMeal.time.hour, prevMeal.time.minutes)

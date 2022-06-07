@@ -7,15 +7,15 @@ import {
   IonSelect,
   IonSelectOption,
 } from "@ionic/react";
-import TopBar from "App/Components/TopBar";
+import TopBar from "app/components/TopBar";
 import React, { useContext, useState } from "react";
 import "./styles.scss";
-import { Context, LangType } from "Utils/Context/LangContext";
-import { getUserDoc, updateUser } from "Utils/Services";
-import LoadingSpinner from "App/Components/LoadingSpinner";
+import { Context, LangType } from "lib/context/LangContext";
+import { getUserDoc, updateUser } from "lib/services";
+import LoadingSpinner from "app/components/LoadingSpinner";
 import { FormattedMessage } from "react-intl";
-import { useFormatMessage } from "Langs/utils";
-import { SelectOptions } from "Utils/functions";
+import { useFormatMessage } from "langs/utils";
+import { SelectOptions } from "lib/functions";
 
 const Config: React.FC = (props) => {
   const [isLoading, setIsLoading] = useState(false);
