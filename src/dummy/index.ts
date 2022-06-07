@@ -50,11 +50,11 @@ export const recipes: IRecipe[] = [
 export const today: IDay = {
   date: "02/02/2022",
   meals: [
-    { mealId: "1", recipeId: "1" },
-    { mealId: "2", recipeId: "2" },
-    { mealId: "3", recipeId: "3" },
-    { mealId: "4", recipeId: "4" },
-    { mealId: "5", recipeId: "5" },
+    { scheduleId: "1", recipeId: "1" },
+    { scheduleId: "2", recipeId: "2" },
+    { scheduleId: "3", recipeId: "3" },
+    { scheduleId: "4", recipeId: "4" },
+    { scheduleId: "5", recipeId: "5" },
   ],
 };
 
@@ -62,21 +62,21 @@ export const week: TCalendar = [
   {
     date: "01/02/2022",
     meals: [
-      { mealId: "1", recipeId: "1" },
-      { mealId: "2", recipeId: "2" },
-      { mealId: "3", recipeId: "3" },
-      { mealId: "4", recipeId: "4" },
-      { mealId: "5", recipeId: "5" },
+      { scheduleId: "1", recipeId: "1" },
+      { scheduleId: "2", recipeId: "2" },
+      { scheduleId: "3", recipeId: "3" },
+      { scheduleId: "4", recipeId: "4" },
+      { scheduleId: "5", recipeId: "5" },
     ],
   },
   {
     date: "02/02/2022",
     meals: [
-      { mealId: "1", recipeId: "1" },
-      { mealId: "2", recipeId: "2" },
-      { mealId: "3", recipeId: "3" },
-      { mealId: "4", recipeId: "4" },
-      { mealId: "5", recipeId: "5" },
+      { scheduleId: "1", recipeId: "1" },
+      { scheduleId: "2", recipeId: "2" },
+      { scheduleId: "3", recipeId: "3" },
+      { scheduleId: "4", recipeId: "4" },
+      { scheduleId: "5", recipeId: "5" },
     ],
   },
 ];

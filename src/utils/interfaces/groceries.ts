@@ -1,8 +1,10 @@
 import { IIngredient } from ".";
 
 export interface IGroceryItem {
-  item: IIngredient;
+  id: string;
   completed?: boolean;
 }
 
-export type TList = IGroceryItem[]
+export interface IGroceryDict {
+  [key: string]: IGroceryItem;
+}

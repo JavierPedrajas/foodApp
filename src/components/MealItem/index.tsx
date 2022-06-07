@@ -19,7 +19,7 @@ const MealItem: React.FC<IMealItem> = (props) => {
       return;
     }
 
-    const newMeal = meals.find((meal) => meal.id === mealInfo.mealId);
+    const newMeal = meals.find((meal) => meal.id === mealInfo.scheduleId);
     setMeal(newMeal);
 
     const newRecipe = recipes.find((recipe) => recipe.id === mealInfo.recipeId);
