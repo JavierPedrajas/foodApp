@@ -17,7 +17,7 @@ const TodayPage: React.FC = () => {
             return null;
           }
           const currentMealTime = new Date(
-            new Date().setHours(meal.time.hour, meal?.time.minutes)
+            new Date().setHours(meal.time.hours, meal?.time.minutes)
           ).getTime();
 
           if (now > currentMealTime) {
@@ -30,7 +30,7 @@ const TodayPage: React.FC = () => {
                 return null;
               }
               const prevMealTime = new Date(
-                new Date().setHours(prevMeal.time.hour, prevMeal.time.minutes)
+                new Date().setHours(prevMeal.time.hours, prevMeal.time.minutes)
               ).getTime();
 
               if (now > prevMealTime) {

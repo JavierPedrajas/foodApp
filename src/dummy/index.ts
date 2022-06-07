@@ -3,15 +3,15 @@ import {
   ICalendarDict,
   IRecipeDict,
   IIngredientsDict,
-  IScheduleDict,
+  ISchedulesDict,
 } from "../lib/interfaces";
 
-export const meals: IScheduleDict = {
-  "1": { id: "1", name: "Desayuno", time: { hour: 9, minutes: 0 } },
-  "2": { id: "2", name: "Almuerzo", time: { hour: 11, minutes: 0 } },
-  "3": { id: "3", name: "Comida", time: { hour: 13, minutes: 30 } },
-  "4": { id: "4", name: "Merienda", time: { hour: 17, minutes: 15 } },
-  "5": { id: "5", name: "Cena", time: { hour: 21, minutes: 0 } },
+export const meals: ISchedulesDict = {
+  "1": { id: "1", name: "Desayuno", time: { hours: 9, minutes: 0 } },
+  "2": { id: "2", name: "Almuerzo", time: { hours: 11, minutes: 0 } },
+  "3": { id: "3", name: "Comida", time: { hours: 13, minutes: 30 } },
+  "4": { id: "4", name: "Merienda", time: { hours: 17, minutes: 15 } },
+  "5": { id: "5", name: "Cena", time: { hours: 21, minutes: 0 } },
 };
 
 const ingredients: IIngredientsDict = {

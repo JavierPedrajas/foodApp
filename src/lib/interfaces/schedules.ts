@@ -1,5 +1,5 @@
 export interface ITime {
-  hour: number;
+  hours: number;
   minutes: number;
 }
 
@@ -9,6 +9,6 @@ export interface ISchedule {
   time: ITime;
 }
 
-export interface IScheduleDict {
+export interface ISchedulesDict {
   [key: string]: ISchedule;
 }
