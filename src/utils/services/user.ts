@@ -6,7 +6,7 @@ import {
 } from "firebase/auth";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { firebaseAuth, firestore } from ".";
-import { IUser } from "../interfaces/user";
+import { IUser } from "Utils/Interfaces/user";
 
 export const signupNewUser = async (email: string, password: string) => {
   return createUserWithEmailAndPassword(firebaseAuth, email, password);

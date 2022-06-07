@@ -1,6 +1,6 @@
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { IIngredient, IIngredientList } from "utils/interfaces";
-import { firestore, getUserDoc } from "utils/services";
+import { IIngredient, IIngredientList } from "Utils/Interfaces";
+import { firestore, getUserDoc } from "Utils/Services";
 
 export const getIngredients = async () => {
   const userDoc = await getUserDoc();

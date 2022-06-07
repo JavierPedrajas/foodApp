@@ -4,7 +4,7 @@ import {
   IMeal,
   IRecipe,
   TCalendar,
-} from "../utils/interfaces";
+} from "../Utils/Interfaces";
 
 export const meals: IMeal[] = [
   { id: "1", name: "Desayuno", time: { hour: 9, minutes: 0 } },

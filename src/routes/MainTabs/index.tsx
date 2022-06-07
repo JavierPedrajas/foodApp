@@ -3,18 +3,15 @@ import {
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
-  IonLabel,
-  IonIcon,
   NavContext,
 } from "@ionic/react";
 import React, { useContext } from "react";
-import { Redirect, Route, useHistory } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { listRoute, scheduleRoute, todayRoute } from "..";
-import TodayPage from "../../pages/Today";
-import CalendarPage from "../../pages/Calendar";
+import TodayPage from "../../App/Pages/Today";
+import CalendarPage from "../../App/Pages/Calendar";
 
-import { calendar, restaurant, list } from "ionicons/icons";
-import ListPage from "../../pages/List";
+import ListPage from "../../App/Pages/List";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -22,7 +19,7 @@ import {
   faShoppingBasket,
 } from "@fortawesome/free-solid-svg-icons";
 import "./styles.scss";
-import CalendarToday from "../../components/CalendarToday";
+import CalendarToday from "../../App/Components/CalendarToday";
 
 const MainTabs: React.FC = () => {
   const { navigate, routeInfo } = useContext(NavContext);

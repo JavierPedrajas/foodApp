@@ -9,7 +9,7 @@ import {
 import React, { useEffect, useState } from "react";
 import "./styles.scss";
 import { useLocation } from "react-router";
-import MenuItem from "../../components/MenuItem";
+import MenuItem from "../../App/Components/MenuItem";
 import { MenuItemList } from "./menuItems";
 
 const SideMenu: React.FC = () => {
