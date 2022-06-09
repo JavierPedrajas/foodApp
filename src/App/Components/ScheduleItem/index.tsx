@@ -8,7 +8,7 @@ import {
 } from "@ionic/react";
 import { createOutline } from "ionicons/icons";
 import React from "react";
-import { IIngredient, ISchedule } from "lib/interfaces";
+import { ISchedule } from "lib/interfaces";
 import "./styles.scss";
 
 interface IScheduleItem {

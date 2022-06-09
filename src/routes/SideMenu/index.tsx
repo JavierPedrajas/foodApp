@@ -10,7 +10,8 @@ import React, { useEffect, useState } from "react";
 import "./styles.scss";
 import { useLocation } from "react-router";
 import MenuItem from "../../app/components/MenuItem";
-import { MenuItemList } from "./menuItems";
+import { getMenuItemList } from "./menuItems";
+import { useIntl } from "react-intl";
 
 const SideMenu: React.FC = () => {
   const location = useLocation();
@@ -22,11 +23,13 @@ const SideMenu: React.FC = () => {
     setSideMenu(menu);
   }, []);
 
+  const intl = useIntl();
+
   return (
     <IonMenu contentId="main" className={"sideMenu"} id="side-menu">
       <IonContent className={"sideMenu__content"}>
         <IonList className={"sideMenu__list"}>
-          {MenuItemList.map((item) => {
+          {getMenuItemList(intl).map((item) => {
             return (
               <MenuItem
                 title={item.title}

@@ -17,19 +17,12 @@ import ModalWrapper from "app/components/ModalWrapper";
 import TopBar from "app/components/TopBar";
 import { add } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
-import { FormattedMessage } from "react-intl";
-import { IIngredient, ISchedule, ITime } from "lib/interfaces";
-import {
-  getIngredients,
-  addIngredient,
-  deleteIngredient,
-  updateIngredient,
-} from "lib/store/ingredientsSlice";
+import { FormattedMessage, useIntl } from "react-intl";
+import { ISchedule, ITime } from "lib/interfaces";
+
 import "./styles.scss";
 
 import { v4 as uuidv4 } from "uuid";
-import IngredientItem from "app/components/IngredientItem";
-import { useFormatMessage } from "langs/utils";
 import { useAppDispatch, useAppSelector } from "lib/hooks/store";
 import {
   addSchedule,
@@ -116,30 +109,44 @@ const Ingredients: React.FC = () => {
     }
   }, [schedules]);
 
+  const intl = useIntl();
+
   return (
     <IonPage>
       <IonModal isOpen={isModalOpen}>
         <ModalWrapper
-          title={useFormatMessage("routes.SideMenu.Schedule")}
-          buttonText={useFormatMessage(
+          title={intl.formatMessage({
+            defaultMessage: "Schedule",
+            id: "hGQqkW",
+          })}
+          buttonText={
             selectedSchedule
-              ? "pages.Ingredients.Modal.Update"
-              : "pages.Ingredients.Modal.Add"
-          )}
+              ? intl.formatMessage({
+                  defaultMessage: "Update Schedule",
+                  id: "Lwte0+",
+                })
+              : intl.formatMessage({
+                  defaultMessage: "Add Schedule",
+                  id: "bqi8A+",
+                })
+          }
           onHandleClose={onCloseModal}
           onHandleAdd={selectedSchedule ? onUpdateSchedule : onAddSchedule}
           isDisabled={scheduleName === ""}
           deleteButton={
             selectedSchedule ? (
               <IonButton onClick={onClickDelete} fill="outline">
-                <FormattedMessage id={"pages.Ingredients.Modal.Delete"} />
+                <FormattedMessage
+                  defaultMessage="Delete Schedule"
+                  id="XnBXRB"
+                />
               </IonButton>
             ) : undefined
           }
         >
           <IonItem>
             <IonLabel position="floating" color="primary">
-              <FormattedMessage defaultMessage="Name" id="ScheduleName" />
+              <FormattedMessage defaultMessage="Name" id="HAlOn1" />
             </IonLabel>
             <IonInput
               color="light"
@@ -150,7 +157,7 @@ const Ingredients: React.FC = () => {
           </IonItem>
           <IonItem>
             <IonLabel position="floating" color="primary">
-              <FormattedMessage defaultMessage="Time" id="ScheduleTime" />
+              <FormattedMessage defaultMessage="Time" id="ug01Mk" />
             </IonLabel>
             <IonInput
               color="light"
@@ -178,17 +185,24 @@ const Ingredients: React.FC = () => {
             isOpen={isDeleteAlertOpen}
             onDidDismiss={() => setIsDeleteAlertOpen(false)}
             cssClass={"my-custom-select"}
-            subHeader={useFormatMessage(
-              "pages.Ingredients.Modal.DeleteConfirm"
-            )}
+            subHeader={intl.formatMessage({
+              defaultMessage: "Are you sure you want to delete this schedule?",
+              id: "jKnh1I",
+            })}
             buttons={[
               {
-                text: useFormatMessage("modal.buttons.Cancel"),
+                text: intl.formatMessage({
+                  defaultMessage: "No, Cancel",
+                  id: "tjhcV3",
+                }),
                 role: "cancel",
                 handler: () => setIsDeleteAlertOpen(false),
               },
               {
-                text: useFormatMessage("modal.buttons.Confirm"),
+                text: intl.formatMessage({
+                  defaultMessage: "Yes, Delete",
+                  id: "QEmYhz",
+                }),
                 handler: onDeleteSchedule,
               },
             ]}
@@ -196,7 +210,12 @@ const Ingredients: React.FC = () => {
         </ModalWrapper>
       </IonModal>
       <LoadingSpinner open={isLoading} />
-      <TopBar title="routes.SideMenu.Schedules" />
+      <TopBar
+        title={intl.formatMessage({
+          defaultMessage: "Schedules",
+          id: "F42bEw",
+        })}
+      />
       <IonContent fullscreen className="ingredients">
         {Object.keys(schedules).length > 0 ? (
           <>
@@ -226,10 +245,16 @@ const Ingredients: React.FC = () => {
             {!isLoading && (
               <>
                 <div className="ingredients__noList__text">
-                  <FormattedMessage id={"pages.Ingredients.NoIngredients"} />
+                  <FormattedMessage
+                    defaultMessage="There are no schedules added"
+                    id="c64ibu"
+                  />
                 </div>
                 <div className="ingredients__noList__text">
-                  <FormattedMessage id={"pages.Ingredients.PressHereToAdd"} />
+                  <FormattedMessage
+                    defaultMessage="Press here to add the first one!"
+                    id="OfCP48"
+                  />
                 </div>
 
                 <IonFab

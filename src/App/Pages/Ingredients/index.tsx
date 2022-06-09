@@ -4,7 +4,6 @@ import {
   IonContent,
   IonFab,
   IonFabButton,
-  IonHeader,
   IonIcon,
   IonInput,
   IonItem,
@@ -12,14 +11,13 @@ import {
   IonList,
   IonModal,
   IonPage,
-  IonTitle,
 } from "@ionic/react";
 import LoadingSpinner from "app/components/LoadingSpinner";
 import ModalWrapper from "app/components/ModalWrapper";
 import TopBar from "app/components/TopBar";
 import { add } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { IIngredient } from "lib/interfaces";
 import {
   getIngredients,
@@ -27,18 +25,15 @@ import {
   deleteIngredient,
   updateIngredient,
   selectIsLoadingIngredients,
+  selectIngredients,
 } from "lib/store/ingredientsSlice";
 import "./styles.scss";
 
 import { v4 as uuidv4 } from "uuid";
 import IngredientItem from "app/components/IngredientItem";
-import { useFormatMessage } from "langs/utils";
 import { useAppDispatch, useAppSelector } from "lib/hooks/store";
-import { selectIngredients } from "lib/store/ingredientsSlice";
 
-interface IIngredients {}
-
-const Ingredients: React.FC<IIngredients> = (props) => {
+const Ingredients: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [ingredientName, setIngredientName] = useState<string>("");
@@ -105,16 +100,27 @@ const Ingredients: React.FC<IIngredients> = (props) => {
     }
   }, []);
 
+  const intl = useIntl();
+
   return (
     <IonPage>
       <IonModal isOpen={isModalOpen}>
         <ModalWrapper
-          title={useFormatMessage("routes.SideMenu.Ingredients")}
-          buttonText={useFormatMessage(
+          title={intl.formatMessage({
+            defaultMessage: "Ingredients",
+            id: "q+X++I",
+          })}
+          buttonText={
             selectedIngredient
-              ? "pages.Ingredients.Modal.Update"
-              : "pages.Ingredients.Modal.Add"
-          )}
+              ? intl.formatMessage({
+                  defaultMessage: "Update Ingredient",
+                  id: "I5WHzz",
+                })
+              : intl.formatMessage({
+                  defaultMessage: "Add Ingredient",
+                  id: "HZqgiQ",
+                })
+          }
           onHandleClose={onCloseModal}
           onHandleAdd={
             selectedIngredient ? onUpdateIngredient : onAddIngredient
@@ -123,14 +129,17 @@ const Ingredients: React.FC<IIngredients> = (props) => {
           deleteButton={
             selectedIngredient ? (
               <IonButton onClick={onClickDelete} fill="outline">
-                <FormattedMessage id={"pages.Ingredients.Modal.Delete"} />
+                <FormattedMessage
+                  defaultMessage="Delete Ingredient"
+                  id="zcuhAh"
+                />
               </IonButton>
             ) : undefined
           }
         >
           <IonItem>
             <IonLabel position="floating" color="primary">
-              <FormattedMessage id={"pages.Ingredients.Modal.Name"} />
+              <FormattedMessage defaultMessage="Name" id="HAlOn1" />
             </IonLabel>
             <IonInput
               color="light"
@@ -143,17 +152,25 @@ const Ingredients: React.FC<IIngredients> = (props) => {
             isOpen={isDeleteAlertOpen}
             onDidDismiss={() => setIsDeleteAlertOpen(false)}
             cssClass={"my-custom-select"}
-            subHeader={useFormatMessage(
-              "pages.Ingredients.Modal.DeleteConfirm"
-            )}
+            subHeader={intl.formatMessage({
+              defaultMessage:
+                "Are you sure you want to delete this ingredient?",
+              id: "N+8klo",
+            })}
             buttons={[
               {
-                text: useFormatMessage("modal.buttons.Cancel"),
+                text: intl.formatMessage({
+                  defaultMessage: "No, Cancel",
+                  id: "tjhcV3",
+                }),
                 role: "cancel",
                 handler: () => setIsDeleteAlertOpen(false),
               },
               {
-                text: useFormatMessage("modal.buttons.Confirm"),
+                text: intl.formatMessage({
+                  defaultMessage: "Yes, Delete",
+                  id: "QEmYhz",
+                }),
                 handler: onDeleteIngredient,
               },
             ]}
@@ -161,7 +178,12 @@ const Ingredients: React.FC<IIngredients> = (props) => {
         </ModalWrapper>
       </IonModal>
       <LoadingSpinner open={isLoading} />
-      <TopBar title="routes.SideMenu.Ingredients" />
+      <TopBar
+        title={intl.formatMessage({
+          defaultMessage: "Ingredients",
+          id: "q+X++I",
+        })}
+      />
       <IonContent fullscreen className="ingredients">
         {Object.keys(ingredients).length > 0 ? (
           <>
@@ -191,10 +213,16 @@ const Ingredients: React.FC<IIngredients> = (props) => {
             {!isLoading && (
               <>
                 <div className="ingredients__noList__text">
-                  <FormattedMessage id={"pages.Ingredients.NoIngredients"} />
+                  <FormattedMessage
+                    defaultMessage="There are no ingredients yet"
+                    id="M/LPix"
+                  />
                 </div>
                 <div className="ingredients__noList__text">
-                  <FormattedMessage id={"pages.Ingredients.PressHereToAdd"} />
+                  <FormattedMessage
+                    defaultMessage="Press here to add the first one!"
+                    id="OfCP48"
+                  />
                 </div>
 
                 <IonFab

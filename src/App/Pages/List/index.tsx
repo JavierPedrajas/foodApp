@@ -2,9 +2,7 @@ import { IonPage, IonContent } from "@ionic/react";
 import React from "react";
 import TopBar from "../../components/TopBar";
 
-interface IListPage {}
-
-const ListPage: React.FC<IListPage> = (props) => {
+const ListPage: React.FC = (props) => {
   return (
     <IonPage>
       <TopBar logo />

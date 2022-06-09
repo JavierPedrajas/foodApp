@@ -3,11 +3,8 @@ import {
   IonButton,
   IonButtons,
   IonContent,
-  IonFab,
-  IonFabButton,
   IonFooter,
   IonHeader,
-  IonIcon,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
@@ -37,12 +34,10 @@ const ModalWrapper: React.FC<IModalWrapper> = (props) => {
     <IonContent className="modal-wrapper">
       <IonHeader className="ion-no-border">
         <IonToolbar className="toolbar">
-          <IonTitle>
-            <FormattedMessage id={title} />
-          </IonTitle>
+          <IonTitle>{title}</IonTitle>
           <IonButtons slot="end">
             <IonButton onClick={onHandleClose}>
-              <FormattedMessage id={"modal.buttons.Close"} />
+              <FormattedMessage defaultMessage="Close" id="rbrahO" />
             </IonButton>
           </IonButtons>
         </IonToolbar>
@@ -58,7 +53,7 @@ const ModalWrapper: React.FC<IModalWrapper> = (props) => {
           onClick={onHandleAdd}
           className="modal-wrapper__button-container__button"
         >
-          <FormattedMessage id={buttonText} />
+          {buttonText}
         </IonButton>
         {deleteButton}
       </IonFooter>

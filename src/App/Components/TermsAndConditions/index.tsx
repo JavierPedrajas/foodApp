@@ -79,7 +79,7 @@ const TermsAndConditions: React.FC<{
         comentarios reflejan los puntos de vista y opiniones de la persona que
         publica. En la medida en que lo permitan las leyes aplicables, RandoMenu
         no será responsable de los comentarios ni de ninguna responsabilidad,
-        daños o gastos causados ​​o sufridos como resultado de cualquier uso o
+        daños o gastos causados o sufridos como resultado de cualquier uso o
         publicación o apariencia de comentarios en este sitio web.{" "}
       </p>{" "}
       <p>
