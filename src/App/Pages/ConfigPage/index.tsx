@@ -13,8 +13,7 @@ import "./styles.scss";
 import { Context, LangType } from "lib/context/LangContext";
 import { getUserDoc, updateUser } from "lib/services";
 import LoadingSpinner from "app/components/LoadingSpinner";
-import { FormattedMessage } from "react-intl";
-import { useFormatMessage } from "langs/utils";
+import { FormattedMessage, useIntl } from "react-intl";
 import { SelectOptions } from "lib/functions";
 
 const Config: React.FC = (props) => {
@@ -33,28 +32,41 @@ const Config: React.FC = (props) => {
     setIsLoading(false);
   };
 
+  const intl = useIntl();
+
   return (
     <IonPage>
       <LoadingSpinner open={isLoading} />
-      <TopBar title={"routes.SideMenu.Configuration"} />
+      <TopBar
+        title={intl.formatMessage({
+          defaultMessage: "Configuration",
+          id: "7OW8BT",
+        })}
+      />
       <IonContent fullscreen>
         <IonList>
           <IonItem>
             <IonLabel color="light">
-              <FormattedMessage id={"pages.ConfigPage.Language"} />
+              <FormattedMessage defaultMessage="Language" id="y1Z3or" />
             </IonLabel>
             <IonSelect
               value={langContext.locale}
               onIonChange={(e) => updateLanguage(e.detail.value)}
               interfaceOptions={SelectOptions}
-              okText={useFormatMessage("modal.buttons.OK")}
-              cancelText={useFormatMessage("modal.buttons.Cancel")}
+              okText={intl.formatMessage({
+                defaultMessage: "Select",
+                id: "kQAf2d",
+              })}
+              cancelText={intl.formatMessage({
+                defaultMessage: "Cancel",
+                id: "47FYwb",
+              })}
             >
               <IonSelectOption value={"es-ES"}>
-                <FormattedMessage id={"pages.ConfigPage.Spanish"} />
+                <FormattedMessage defaultMessage="Spanish" id="8WtyrD" />
               </IonSelectOption>
               <IonSelectOption value={"en-US"}>
-                <FormattedMessage id={"pages.ConfigPage.English"} />
+                <FormattedMessage defaultMessage="English" id="WkrNSk" />
               </IonSelectOption>
             </IonSelect>
           </IonItem>

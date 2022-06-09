@@ -10,46 +10,56 @@ import {
   IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { IntlShape } from "react-intl";
+
 interface IMenuItem {
   title: string;
   link: string;
   icon: IconDefinition;
 }
 
-export const MenuItemList: IMenuItem[] = [
-  {
-    title: "routes.SideMenu.Home",
-    link: "/tabs/today",
-    icon: faHome,
-  },
-  {
-    title: "routes.SideMenu.Recipes",
-    link: "/recipes",
-    icon: faHamburger,
-  },
-  {
-    title: "routes.SideMenu.Ingredients",
-    link: "/ingredients",
-    icon: faCarrot,
-  },
-  {
-    title: "routes.SideMenu.Schedule",
-    link: "/schedule",
-    icon: faClock,
-  },
-  {
-    title: "routes.SideMenu.Profile",
-    link: "/profile",
-    icon: faUser,
-  },
-  {
-    title: "routes.SideMenu.Configuration",
-    link: "/config",
-    icon: faCog,
-  },
-  {
-    title: "routes.SideMenu.Logout",
-    link: "/logout",
-    icon: faSignOutAlt,
-  },
-];
+export const getMenuItemList = (intl: IntlShape): IMenuItem[] => {
+  return [
+    {
+      title: intl.formatMessage({ defaultMessage: "Home", id: "ejEGdx" }),
+      link: "/tabs/today",
+      icon: faHome,
+    },
+    {
+      title: intl.formatMessage({ defaultMessage: "Recipes", id: "RJ0Itf" }),
+      link: "/recipes",
+      icon: faHamburger,
+    },
+    {
+      title: intl.formatMessage({
+        defaultMessage: "Ingredients",
+        id: "q+X++I",
+      }),
+      link: "/ingredients",
+      icon: faCarrot,
+    },
+    {
+      title: intl.formatMessage({ defaultMessage: "Schedule", id: "hGQqkW" }),
+      link: "/schedule",
+      icon: faClock,
+    },
+    {
+      title: intl.formatMessage({ defaultMessage: "Profile", id: "itPgxd" }),
+      link: "/profile",
+      icon: faUser,
+    },
+    {
+      title: intl.formatMessage({
+        defaultMessage: "Configuration",
+        id: "7OW8BT",
+      }),
+      link: "/config",
+      icon: faCog,
+    },
+    {
+      title: intl.formatMessage({ defaultMessage: "Logout", id: "C81/uG" }),
+      link: "/logout",
+      icon: faSignOutAlt,
+    },
+  ];
+};

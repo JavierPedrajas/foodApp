@@ -43,9 +43,19 @@ const LangContextWrapper: React.FC<{ loginStatus: string }> = (props) => {
     }
   };
 
+  const SuppresTranslationErrors = true;
+
   return (
     <Context.Provider value={{ locale: localeState, selectLanguage }}>
-      <IntlProvider locale={localeState} messages={messages}>
+      <IntlProvider
+        locale={localeState}
+        messages={messages}
+        onError={(e) => {
+          if (!SuppresTranslationErrors) {
+            console.warn(e);
+          }
+        }}
+      >
         {props.children}
       </IntlProvider>
     </Context.Provider>

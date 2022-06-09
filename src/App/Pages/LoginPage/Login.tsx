@@ -6,8 +6,7 @@ import React, { useState } from "react";
 import "./styles.scss";
 import { loginUser } from "lib/services";
 import LoadingSpinner from "app/components/LoadingSpinner";
-import { FormattedMessage } from "react-intl";
-import { useFormatMessage } from "langs/utils";
+import { FormattedMessage, useIntl } from "react-intl";
 
 interface LoginProps {
   backtoSignup: () => void;
@@ -25,12 +24,13 @@ const Login: React.FC<LoginProps> = (props) => {
     await loginUser(email!, password!);
     setLoading(false);
   };
+  const intl = useIntl();
 
   return (
     <div className={"login__signup"}>
       <LoadingSpinner open={loading} />
       <IonText className={"login__signup__header"}>
-        <FormattedMessage id={"pages.LoginPage.Login"} />
+        <FormattedMessage defaultMessage="Log In" id="r2Jjms" />
       </IonText>
       <div className={"login__signup__margin-bottom"}>
         <Input
@@ -45,13 +45,19 @@ const Login: React.FC<LoginProps> = (props) => {
         <Input
           inputType="password"
           handleChange={(event) => setPassword(event.target.value)}
-          placeholder={useFormatMessage("pages.LoginPage.Login.Password")}
+          placeholder={intl.formatMessage({
+            defaultMessage: "Password",
+            id: "5sg7KC",
+          })}
           // icon={PasswordIcon}
           login
         />
         {password && password.length < 6 && (
           <IonText className={"login__signup__passwordlength"}>
-            <FormattedMessage id={"pages.LoginPage.Login.PasswordLength"} />
+            <FormattedMessage
+              defaultMessage="Password should contain 6 characters or more"
+              id="L57Ym6"
+            />
           </IonText>
         )}
       </div>
@@ -66,13 +72,16 @@ const Login: React.FC<LoginProps> = (props) => {
             (password != undefined && password.length < 6)
           }
         >
-          <FormattedMessage id={"pages.LoginPage.Login"} />
+          <FormattedMessage defaultMessage="Log In" id="r2Jjms" />
         </IonButton>
       </div>
       <IonText className={"login__signup__switch"}>
-        <FormattedMessage id={"pages.LoginPage.Login.NoAccount"} />{" "}
+        <FormattedMessage
+          defaultMessage="You don't have an account?"
+          id="9nKRpS"
+        />{" "}
         <b onClick={backtoSignup}>
-          <FormattedMessage id={"pages.LoginPage.Signup"} />
+          <FormattedMessage defaultMessage="Sign up for free!" id="lDBOJP" />
         </b>
       </IonText>
     </div>

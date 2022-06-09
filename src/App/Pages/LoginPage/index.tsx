@@ -71,10 +71,13 @@ const LoginPage: React.FC = () => {
           </div>
           <div className="login__main__buttons">
             <IonButton fill="solid" onClick={() => setCurrentPage("signup")}>
-              <FormattedMessage id={"pages.LoginPage.Signup"} />
+              <FormattedMessage
+                defaultMessage="Sign up for free!"
+                id="lDBOJP"
+              />
             </IonButton>
             <IonButton fill="outline" onClick={() => setCurrentPage("login")}>
-              <FormattedMessage id={"pages.LoginPage.Login"} />
+              <FormattedMessage defaultMessage="Log In" id="r2Jjms" />
             </IonButton>
           </div>
         </>

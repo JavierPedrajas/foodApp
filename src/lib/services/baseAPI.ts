@@ -24,7 +24,9 @@ export const getItems = async (APIRef: string) => {
       // doc.data() will be undefined in this case
       console.log("No such document!");
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log("error", error);
+  }
 };
 
 export const addItem = async (APIRef: string, item: any) => {

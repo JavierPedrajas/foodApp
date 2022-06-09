@@ -1,14 +1,16 @@
 import { IonContent, IonPage } from "@ionic/react";
 import TopBar from "app/components/TopBar";
 import React from "react";
+import { useIntl } from "react-intl";
 import "./styles.scss";
 
-interface IProfile {}
-
-const Profile: React.FC<IProfile> = (props) => {
+const Profile: React.FC = () => {
+  const intl = useIntl();
   return (
     <IonPage>
-      <TopBar title={"routes.SideMenu.Profile"} />
+      <TopBar
+        title={intl.formatMessage({ defaultMessage: "Profile", id: "itPgxd" })}
+      />
       <IonContent fullscreen></IonContent>
     </IonPage>
   );

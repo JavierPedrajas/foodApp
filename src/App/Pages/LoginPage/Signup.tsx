@@ -2,20 +2,15 @@ import {
   IonAlert,
   IonButton,
   IonCheckbox,
-  IonInput,
   IonModal,
   IonText,
 } from "@ionic/react";
-import Button from "app/components/Button";
 import Input from "app/components/Input";
-import React, { useEffect, useState } from "react";
-// import EmailIcon from "assets/icons/email.svg";
-// import PasswordIcon from "assets/icons/password.svg";
+import React, { useState } from "react";
 import TermsAndConditions from "app/components/TermsAndConditions";
 import { addUser, sendVerificationEmail, signupNewUser } from "lib/services";
 import LoadingSpinner from "app/components/LoadingSpinner";
-import { FormattedMessage } from "react-intl";
-import { useFormatMessage } from "langs/utils";
+import { FormattedMessage, useIntl } from "react-intl";
 
 interface SignupProps {
   backToLogin: () => void;
@@ -38,20 +33,38 @@ const Signup: React.FC<SignupProps> = (props) => {
     header: string;
   }>({ open: false, text: "", header: "" });
 
-  const successHeader = useFormatMessage("pages.LoginPage.Signup.Completed");
-  const successText = useFormatMessage("pages.LoginPage.Signup.EmailSent");
+  const intl = useIntl();
 
-  const errorHeader = useFormatMessage("pages.LoginPage.Signup.Error");
-  const errorText = useFormatMessage("pages.LoginPage.Signup.EmailInUse");
+  const successHeader = intl.formatMessage({
+    defaultMessage: "Signup completed!",
+    id: "9RmcK8",
+  });
+  const successText = intl.formatMessage({
+    defaultMessage:
+      "We've sent you a confirmation email, please check your inbox and spam folder",
+    id: "x7lYvf",
+  });
+
+  const errorHeader = intl.formatMessage({
+    defaultMessage: "There was an error",
+    id: "Z7vWDQ",
+  });
+
+  const errorText = intl.formatMessage({
+    defaultMessage: "This email is already in use, please log in",
+    id: "WQ++ux",
+  });
 
   const signupHandler = async () => {
+    if (!email || !password) return;
+
     setLoading(true);
     try {
-      const newUser = await signupNewUser(email!, password!);
+      const newUser = await signupNewUser(email, password);
       await sendVerificationEmail();
       await addUser({
         uid: newUser.user.uid,
-        email: email!,
+        email: email,
         config: {
           language: navigator.language === "es-ES" ? "es-ES" : "en-US",
         },
@@ -100,7 +113,7 @@ const Signup: React.FC<SignupProps> = (props) => {
         />
       </IonModal>
       <IonText className={"login__signup__header"}>
-        <FormattedMessage id={"pages.LoginPage.Signup"} />
+        <FormattedMessage defaultMessage="Sign up for free!" id="lDBOJP" />
       </IonText>
       <div className={"login__signup__margin-bottom"}>
         <Input
@@ -115,13 +128,18 @@ const Signup: React.FC<SignupProps> = (props) => {
         <Input
           inputType="password"
           handleChange={(event) => setPassword(event.target.value)}
-          placeholder={useFormatMessage("pages.LoginPage.Login.Password")}
-          // icon={PasswordIcon}
+          placeholder={intl.formatMessage({
+            defaultMessage: "Password",
+            id: "5sg7KC",
+          })}
           login
         />
         {password && password.length < 6 && (
           <IonText className={"login__signup__passwordlength"}>
-            <FormattedMessage id={"pages.LoginPage.Login.PasswordLength"} />
+            <FormattedMessage
+              defaultMessage="Password should contain 6 characters or more"
+              id="L57Ym6"
+            />
           </IonText>
         )}
       </div>
@@ -134,12 +152,15 @@ const Signup: React.FC<SignupProps> = (props) => {
           color="primary"
         />
         <div className={"login__signup__terms__text"}>
-          <FormattedMessage id={"pages.LoginPage.Signup.ReadAndAccept"} />{" "}
+          <FormattedMessage
+            defaultMessage="I've read and accepted the"
+            id="3HeHzW"
+          />{" "}
           <span
             className={"login__signup__terms__text__clickable"}
             onClick={() => setTermsOpen(true)}
           >
-            <FormattedMessage id={"pages.LoginPage.Signup.Terms"} />
+            <FormattedMessage defaultMessage="terms & conditions" id="ySSFAT" />
           </span>
         </div>
       </div>
@@ -155,13 +176,16 @@ const Signup: React.FC<SignupProps> = (props) => {
             (password != undefined && password.length < 6)
           }
         >
-          <FormattedMessage id={"pages.LoginPage.Signup"} />
+          <FormattedMessage defaultMessage="Sign up for free!" id="lDBOJP" />
         </IonButton>
       </div>
       <IonText className={"login__signup__switch"}>
-        <FormattedMessage id={"pages.LoginPage.Signup.AlreadyAccount"} />{" "}
+        <FormattedMessage
+          defaultMessage="You already have an account?"
+          id="5aBpjT"
+        />{" "}
         <b onClick={backToLogin}>
-          <FormattedMessage id={"pages.LoginPage.Login"} />
+          <FormattedMessage defaultMessage="Log In" id="r2Jjms" />
         </b>
       </IonText>
     </div>

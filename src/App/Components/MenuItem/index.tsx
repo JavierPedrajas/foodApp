@@ -37,7 +37,7 @@ const MenuItem: React.FC<IMenuItem> = (props) => {
           className={`menuItem__icon ${menuColor}`}
         />
         <IonLabel color={menuColor} className="menuItem__label">
-          <FormattedMessage id={title} />
+          {title}
         </IonLabel>
       </IonItem>
     );
@@ -55,7 +55,7 @@ const MenuItem: React.FC<IMenuItem> = (props) => {
     >
       <FontAwesomeIcon icon={icon} className={`menuItem__icon ${menuColor}`} />
       <IonLabel color={menuColor} className="menuItem__label">
-        <FormattedMessage id={title} />
+        {title}
       </IonLabel>
     </IonItem>
   );
