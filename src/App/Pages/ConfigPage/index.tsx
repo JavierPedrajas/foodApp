@@ -9,7 +9,6 @@ import {
 } from "@ionic/react";
 import TopBar from "app/components/TopBar";
 import React, { useContext, useState } from "react";
-import "./styles.scss";
 import { Context, LangType } from "lib/context/LangContext";
 import { getUserDoc, updateUser } from "lib/services";
 import LoadingSpinner from "app/components/LoadingSpinner";

@@ -1,16 +1,21 @@
-import {
-  IonAlert,
-  IonButton,
-  IonCheckbox,
-  IonModal,
-  IonText,
-} from "@ionic/react";
+import { IonAlert, IonButton, IonCheckbox, IonModal } from "@ionic/react";
 import Input from "app/components/Input";
 import React, { useState } from "react";
 import TermsAndConditions from "app/components/TermsAndConditions";
 import { addUser, sendVerificationEmail, signupNewUser } from "lib/services";
 import LoadingSpinner from "app/components/LoadingSpinner";
 import { FormattedMessage, useIntl } from "react-intl";
+import { LoginSignupContainer } from "app/components/SharedStyledComponents";
+import {
+  AuthHeader,
+  AuthSwitch,
+  BoldText,
+  LoginMarginBottom,
+  LoginSignupButtonsContainer,
+  PasswordLengthWarning,
+} from "app/pages/LoginPage";
+
+import styled from "styled-components";
 
 interface SignupProps {
   backToLogin: () => void;
@@ -88,7 +93,7 @@ const Signup: React.FC<SignupProps> = (props) => {
   };
 
   return (
-    <div className={"login__signup"}>
+    <LoginSignupContainer>
       <LoadingSpinner open={loading} />
       <IonAlert
         header={loginAlert.header}
@@ -100,7 +105,7 @@ const Signup: React.FC<SignupProps> = (props) => {
         }}
         buttons={[{ text: "Cerrar" }]}
       />
-      <IonModal isOpen={termsOpen} className={"login__signup__modal"}>
+      <SignupModal isOpen={termsOpen}>
         <TermsAndConditions
           onConfirm={() => {
             setTermsAccepted(true);
@@ -111,20 +116,19 @@ const Signup: React.FC<SignupProps> = (props) => {
             setTermsOpen(false);
           }}
         />
-      </IonModal>
-      <IonText className={"login__signup__header"}>
+      </SignupModal>
+      <AuthHeader>
         <FormattedMessage defaultMessage="Sign up for free!" id="lDBOJP" />
-      </IonText>
-      <div className={"login__signup__margin-bottom"}>
+      </AuthHeader>
+      <LoginMarginBottom>
         <Input
           inputType="email"
           handleChange={(event) => setEmail(event.target.value)}
           placeholder="Email"
-          // icon={EmailIcon}
           login
         />
-      </div>
-      <div className={"login__signup__margin-bottom"}>
+      </LoginMarginBottom>
+      <LoginMarginBottom>
         <Input
           inputType="password"
           handleChange={(event) => setPassword(event.target.value)}
@@ -135,15 +139,15 @@ const Signup: React.FC<SignupProps> = (props) => {
           login
         />
         {password && password.length < 6 && (
-          <IonText className={"login__signup__passwordlength"}>
+          <PasswordLengthWarning>
             <FormattedMessage
               defaultMessage="Password should contain 6 characters or more"
               id="L57Ym6"
             />
-          </IonText>
+          </PasswordLengthWarning>
         )}
-      </div>
-      <div className={"login__signup__terms"}>
+      </LoginMarginBottom>
+      <TermsContainer>
         <IonCheckbox
           checked={termsAccepted}
           onClick={() =>
@@ -151,23 +155,19 @@ const Signup: React.FC<SignupProps> = (props) => {
           }
           color="primary"
         />
-        <div className={"login__signup__terms__text"}>
+        <TermsText>
           <FormattedMessage
             defaultMessage="I've read and accepted the"
             id="3HeHzW"
           />{" "}
-          <span
-            className={"login__signup__terms__text__clickable"}
-            onClick={() => setTermsOpen(true)}
-          >
+          <TermsClickable onClick={() => setTermsOpen(true)}>
             <FormattedMessage defaultMessage="terms & conditions" id="ySSFAT" />
-          </span>
-        </div>
-      </div>
-      <div className="login__signup__buttons">
+          </TermsClickable>
+        </TermsText>
+      </TermsContainer>
+      <LoginSignupButtonsContainer>
         <IonButton
           fill="solid"
-          // type="main"
           onClick={signupHandler}
           disabled={
             !email ||
@@ -178,18 +178,43 @@ const Signup: React.FC<SignupProps> = (props) => {
         >
           <FormattedMessage defaultMessage="Sign up for free!" id="lDBOJP" />
         </IonButton>
-      </div>
-      <IonText className={"login__signup__switch"}>
+      </LoginSignupButtonsContainer>
+      <AuthSwitch>
         <FormattedMessage
           defaultMessage="You already have an account?"
           id="5aBpjT"
         />{" "}
-        <b onClick={backToLogin}>
+        <BoldText onClick={backToLogin}>
           <FormattedMessage defaultMessage="Log In" id="r2Jjms" />
-        </b>
-      </IonText>
-    </div>
+        </BoldText>
+      </AuthSwitch>
+    </LoginSignupContainer>
   );
 };
 
 export default Signup;
+
+const SignupModal = styled(IonModal)`
+  &::part(content) {
+    overflow-y: scroll;
+  }
+`;
+
+const TermsContainer = styled.div`
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.2rem;
+  margin-left: 4rem;
+  font-size: 1.3rem;
+`;
+
+const TermsText = styled.div`
+  width: 70%;
+  margin-left: 1rem;
+`;
+const TermsClickable = styled.span`
+  font-weight: 600;
+  margin-left: 0.3rem;
+`;

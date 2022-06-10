@@ -1,5 +1,5 @@
 // Routes
 
-export const todayRoute = "/tabs/today"
-export const scheduleRoute = "/tabs/schedule"
-export const listRoute = "/tabs/list"
+export const todayRoute = "/tabs/today";
+export const scheduleRoute = "/tabs/schedule";
+export const groceriesRoute = "/tabs/groceries";

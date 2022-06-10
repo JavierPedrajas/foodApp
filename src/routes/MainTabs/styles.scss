@@ -3,18 +3,9 @@
   &__tabBar {
     --background: var(--purple-light);
     --color: var(--light);
-    // padding: 1rem 0;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     --border: none;
     height: 7.5rem;
-
-    &__icon-container {
-      width: 120%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
   }
 }

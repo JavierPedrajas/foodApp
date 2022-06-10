@@ -8,7 +8,7 @@ interface ILoadingSpinnerProps {
 
 const LoadingSpinner: React.FC<ILoadingSpinnerProps> = (props) => {
   const { open } = props;
-
+  // to check how to apply styled component
   return <IonLoading isOpen={open} spinner="bubbles" cssClass="spinner" />;
 };
 

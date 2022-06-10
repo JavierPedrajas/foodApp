@@ -1,10 +1,9 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IonItem, IonIcon, IonLabel, NavContext } from "@ionic/react";
+import { IonItem, IonLabel, NavContext } from "@ionic/react";
 import React, { useContext } from "react";
-import { FormattedMessage } from "react-intl";
 import { logoutUser } from "lib/services";
-import "./styles.scss";
+import styled from "styled-components";
 
 interface IMenuItem {
   title: string;
@@ -14,12 +13,14 @@ interface IMenuItem {
   closeCallback?: () => void;
 }
 
+type ColorTypes = "primary" | "light";
+
 const MenuItem: React.FC<IMenuItem> = (props) => {
   const { title, link, icon, currentPath, closeCallback } = props;
 
   const { navigate } = useContext(NavContext);
 
-  let menuColor = "light";
+  let menuColor: ColorTypes = "light";
 
   if (currentPath.includes("tabs") && link.includes("tabs")) {
     menuColor = "primary";
@@ -31,34 +32,45 @@ const MenuItem: React.FC<IMenuItem> = (props) => {
 
   if (link === "/logout") {
     return (
-      <IonItem onClick={logoutUser} className="menuItem">
-        <FontAwesomeIcon
-          icon={icon}
-          className={`menuItem__icon ${menuColor}`}
-        />
-        <IonLabel color={menuColor} className="menuItem__label">
-          {title}
-        </IonLabel>
-      </IonItem>
+      <MenuItemWrapper onClick={logoutUser}>
+        <MenuItemIcon icon={icon} color={menuColor} />
+        <MenuItemLabel color={menuColor}>{title}</MenuItemLabel>
+      </MenuItemWrapper>
     );
   }
 
   return (
-    <IonItem
+    <MenuItemWrapper
       onClick={() => {
         navigate(link);
         if (closeCallback) {
           closeCallback();
         }
       }}
-      className="menuItem"
     >
-      <FontAwesomeIcon icon={icon} className={`menuItem__icon ${menuColor}`} />
-      <IonLabel color={menuColor} className="menuItem__label">
-        {title}
-      </IonLabel>
-    </IonItem>
+      <MenuItemIcon icon={icon} color={menuColor} />
+      <MenuItemLabel color={menuColor}>{title}</MenuItemLabel>
+    </MenuItemWrapper>
   );
 };
 
 export default MenuItem;
+
+const MenuItemWrapper = styled(IonItem)`
+  font-size: 2.5rem;
+`;
+
+const MenuItemLabel = styled(IonLabel)`
+  margin-left: 1rem;
+`;
+
+const MenuItemIcon = styled(FontAwesomeIcon)<{ color: ColorTypes }>`
+  color: ${({ color }) => {
+    switch (color) {
+      case "light":
+        return "var(--light)";
+      case "primary":
+        return "var(--ion-color-primary)";
+    }
+  }}};
+`;

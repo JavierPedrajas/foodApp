@@ -1,14 +1,8 @@
-import {
-  IonButton,
-  IonButtons,
-  IonIcon,
-  IonItem,
-  IonLabel,
-} from "@ionic/react";
+import { IonButton, IonButtons, IonIcon, IonLabel } from "@ionic/react";
 import { createOutline } from "ionicons/icons";
 import React from "react";
 import { IIngredient } from "lib/interfaces";
-import "./styles.scss";
+import { StyledListItem } from "app/components/SharedStyledComponents";
 
 interface IIngredientItem {
   ingredient: IIngredient;
@@ -18,14 +12,14 @@ interface IIngredientItem {
 const IngredientItem: React.FC<IIngredientItem> = (props) => {
   const { ingredient, onHandleEdit } = props;
   return (
-    <IonItem className="ingredient-item">
+    <StyledListItem>
       <IonLabel color="light">{ingredient.name}</IonLabel>
       <IonButtons slot="end">
         <IonButton onClick={() => onHandleEdit(ingredient)}>
           <IonIcon icon={createOutline} color="light" />
         </IonButton>
       </IonButtons>
-    </IonItem>
+    </StyledListItem>
   );
 };
 

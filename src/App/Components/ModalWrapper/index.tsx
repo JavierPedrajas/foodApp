@@ -9,7 +9,8 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import React, { ReactElement } from "react";
-import "./styles.scss";
+import styled from "styled-components";
+import { StyledToolbar } from "app/components/SharedStyledComponents";
 
 interface IModalWrapper {
   title: string;
@@ -31,35 +32,46 @@ const ModalWrapper: React.FC<IModalWrapper> = (props) => {
   } = props;
 
   return (
-    <IonContent className="modal-wrapper">
+    <IonContent>
       <IonHeader className="ion-no-border">
-        <IonToolbar className="toolbar">
+        <StyledToolbar>
           <IonTitle>{title}</IonTitle>
           <IonButtons slot="end">
             <IonButton onClick={onHandleClose}>
               <FormattedMessage defaultMessage="Close" id="rbrahO" />
             </IonButton>
           </IonButtons>
-        </IonToolbar>
+        </StyledToolbar>
       </IonHeader>
       {props.children}
 
-      {/* <div className="modal-wrapper__button-container"> */}
-      <IonFooter className="modal-wrapper__button-container">
-        <IonButton
+      <ButtonContainer>
+        <Button
           disabled={isDisabled}
           fill="solid"
           color="primary"
           onClick={onHandleAdd}
-          className="modal-wrapper__button-container__button"
         >
           {buttonText}
-        </IonButton>
+        </Button>
         {deleteButton}
-      </IonFooter>
-      {/* </div> */}
+      </ButtonContainer>
     </IonContent>
   );
 };
 
 export default ModalWrapper;
+
+const ButtonContainer = styled(IonFooter)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  bottom: 0;
+  padding: 1em 1.25em;
+`;
+
+const Button = styled(IonButton)`
+  width: 100%;
+`;

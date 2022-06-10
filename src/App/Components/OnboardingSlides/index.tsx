@@ -1,18 +1,11 @@
-import {
-  IonButton,
-  IonContent,
-  IonImg,
-  IonRippleEffect,
-  IonSlide,
-  IonSlides,
-} from "@ionic/react";
+import { IonContent, IonRippleEffect, IonSlide, IonSlides } from "@ionic/react";
 
 import Slide1 from "assets/onboarding/slide1.png";
 import Slide2 from "assets/onboarding/slide2.png";
 import Slide3 from "assets/onboarding/slide3.png";
 
 import React from "react";
-import "./styles.scss";
+import styled from "styled-components";
 
 const OnboardingSlides: React.FC<{ onComplete: () => void }> = (props) => {
   const { onComplete } = props;
@@ -20,45 +13,42 @@ const OnboardingSlides: React.FC<{ onComplete: () => void }> = (props) => {
     <IonContent fullscreen>
       <IonSlides pager>
         <IonSlide>
-          <div className="slide one">
-            <div className="slide__text">
-              <img src={Slide1} />
+          <SlideBase>
+            <SlideText>
+              <SlideImg src={Slide1} />
               ¿Te aburre planificar los menús?
-            </div>
-          </div>
+            </SlideText>
+          </SlideBase>
         </IonSlide>
         <IonSlide>
-          <div className="slide two">
-            <div className="slide__text">
-              <img src={Slide2} />
+          <SlideBase>
+            <SlideText>
+              <SlideImg src={Slide2} />
               ¿No sabes qué hacer para comer?
-            </div>
-          </div>
+            </SlideText>
+          </SlideBase>
         </IonSlide>
         <IonSlide>
-          <div className="slide three">
-            <div className="slide__text">
-              <img src={Slide3} />
+          <SlideBase>
+            <SlideText>
+              <SlideImg src={Slide3} />
               ¡Nosotros nos encargamos!
-            </div>
-          </div>
+            </SlideText>
+          </SlideBase>
         </IonSlide>
 
         <IonSlide>
-          <div className="slide four">
-            <div className="slide__text">
+          <SlideBase>
+            <SlideText>
               RandoMenu genera menús aleatorios, pero con tus recetas.
-            </div>
-            <div className="slide__button-container">
-              <button
-                onClick={onComplete}
-                className="slide__button ion-activatable"
-              >
+            </SlideText>
+            <ButtonContainer>
+              <Button onClick={onComplete} className="ion-activatable">
                 ¡Vamos!
                 <IonRippleEffect></IonRippleEffect>
-              </button>
-            </div>
-          </div>
+              </Button>
+            </ButtonContainer>
+          </SlideBase>
         </IonSlide>
       </IonSlides>
     </IonContent>
@@ -66,3 +56,39 @@ const OnboardingSlides: React.FC<{ onComplete: () => void }> = (props) => {
 };
 
 export default OnboardingSlides;
+
+const SlideBase = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position-x: center;
+  position: relative;
+  color: var(--light);
+`;
+
+const SlideText = styled.div`
+  font-size: 3.5rem;
+  font-weight: 600;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+`;
+
+const ButtonContainer = styled.div`
+  position: absolute;
+  left: 50%;
+  bottom: 15%;
+  transform: translateX(-50%);
+`;
+
+const Button = styled.button`
+  font-size: 2rem;
+  font-weight: 600;
+  background-color: var(--main);
+  padding: 1rem 4rem;
+  border-radius: 15px;
+`;
+
+const SlideImg = styled.img``;

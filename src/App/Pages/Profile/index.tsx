@@ -2,7 +2,6 @@ import { IonContent, IonPage } from "@ionic/react";
 import TopBar from "app/components/TopBar";
 import React from "react";
 import { useIntl } from "react-intl";
-import "./styles.scss";
 
 const Profile: React.FC = () => {
   const intl = useIntl();
