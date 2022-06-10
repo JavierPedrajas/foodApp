@@ -5,6 +5,6 @@ export interface IRecipe {
   scheduleIDs: string[];
 }
 
-export interface IRecipeDict {
+export interface IRecipesDict {
   [key: string]: IRecipe;
 }

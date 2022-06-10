@@ -1,7 +1,7 @@
 import {
   IDay,
   ICalendarDict,
-  IRecipeDict,
+  IRecipesDict,
   IIngredientsDict,
   ISchedulesDict,
 } from "../lib/interfaces";
@@ -19,7 +19,7 @@ export const ingredients: IIngredientsDict = {
   "2": { id: "2", name: "Tomate" },
 };
 
-export const recipes: IRecipeDict = {
+export const recipes: IRecipesDict = {
   "1": {
     id: "1",
     name: "Leche con cereales",
