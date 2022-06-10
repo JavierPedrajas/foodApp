@@ -1,3 +1,5 @@
+/* eslint-disable no-empty-function */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { IntlProvider } from "react-intl";
 import SpanishMessages from "langs/es.json";
@@ -15,6 +17,7 @@ export type LangType = "es-ES" | "en-US";
 
 export const Context = React.createContext({
   locale,
+
   selectLanguage: (lang: LangType) => {},
 });
 
@@ -43,7 +46,7 @@ const LangContextWrapper: React.FC<{ loginStatus: string }> = (props) => {
     }
   };
 
-  const SuppresTranslationErrors = true;
+  const SuppressTranslationErrors = true;
 
   return (
     <Context.Provider value={{ locale: localeState, selectLanguage }}>
@@ -51,7 +54,7 @@ const LangContextWrapper: React.FC<{ loginStatus: string }> = (props) => {
         locale={localeState}
         messages={messages}
         onError={(e) => {
-          if (!SuppresTranslationErrors) {
+          if (!SuppressTranslationErrors) {
             console.warn(e);
           }
         }}

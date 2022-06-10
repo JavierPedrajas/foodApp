@@ -2,14 +2,13 @@ import {
   IonButton,
   IonButtons,
   IonIcon,
-  IonItem,
   IonLabel,
   IonText,
 } from "@ionic/react";
 import { createOutline } from "ionicons/icons";
 import React from "react";
 import { ISchedule } from "lib/interfaces";
-import "./styles.scss";
+import { StyledListItem } from "app/components/SharedStyledComponents";
 
 interface IScheduleItem {
   schedule: ISchedule;
@@ -19,7 +18,7 @@ interface IScheduleItem {
 const ScheduleItem: React.FC<IScheduleItem> = (props) => {
   const { schedule, onHandleEdit } = props;
   return (
-    <IonItem className="ingredient-item">
+    <StyledListItem>
       <IonLabel color="light">{schedule.name}</IonLabel>
       <IonText color="light">
         {schedule.time.hours.toString().padStart(2, "0")}:
@@ -30,7 +29,7 @@ const ScheduleItem: React.FC<IScheduleItem> = (props) => {
           <IonIcon icon={createOutline} color="light" />
         </IonButton>
       </IonButtons>
-    </IonItem>
+    </StyledListItem>
   );
 };
 

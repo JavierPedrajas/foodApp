@@ -2,7 +2,7 @@ import { IonPage, IonContent } from "@ionic/react";
 import React from "react";
 import TopBar from "../../components/TopBar";
 
-const ListPage: React.FC = (props) => {
+const GroceriesPage: React.FC = (props) => {
   return (
     <IonPage>
       <TopBar logo />
@@ -11,4 +11,4 @@ const ListPage: React.FC = (props) => {
   );
 };
 
-export default ListPage;
+export default GroceriesPage;

@@ -27,11 +27,14 @@ import {
   selectIsLoadingIngredients,
   selectIngredients,
 } from "lib/store/ingredientsSlice";
-import "./styles.scss";
 
 import { v4 as uuidv4 } from "uuid";
 import IngredientItem from "app/components/IngredientItem";
 import { useAppDispatch, useAppSelector } from "lib/hooks/store";
+import {
+  NoItemsList,
+  NoItemsText,
+} from "app/components/SharedStyledComponents";
 
 const Ingredients: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -184,7 +187,7 @@ const Ingredients: React.FC = () => {
           id: "q+X++I",
         })}
       />
-      <IonContent fullscreen className="ingredients">
+      <IonContent fullscreen>
         {Object.keys(ingredients).length > 0 ? (
           <>
             <IonList>
@@ -201,7 +204,6 @@ const Ingredients: React.FC = () => {
               horizontal="end"
               slot="fixed"
               onClick={() => setIsModalOpen(true)}
-              // className={"custom-fab"}
             >
               <IonFabButton>
                 <IonIcon icon={add} />
@@ -209,21 +211,21 @@ const Ingredients: React.FC = () => {
             </IonFab>
           </>
         ) : (
-          <div className="ingredients__noList">
+          <NoItemsList>
             {!isLoading && (
               <>
-                <div className="ingredients__noList__text">
+                <NoItemsText>
                   <FormattedMessage
                     defaultMessage="There are no ingredients yet"
                     id="M/LPix"
                   />
-                </div>
-                <div className="ingredients__noList__text">
+                </NoItemsText>
+                <NoItemsText>
                   <FormattedMessage
                     defaultMessage="Press here to add the first one!"
                     id="OfCP48"
                   />
-                </div>
+                </NoItemsText>
 
                 <IonFab
                   horizontal="center"
@@ -235,7 +237,7 @@ const Ingredients: React.FC = () => {
                 </IonFab>
               </>
             )}
-          </div>
+          </NoItemsList>
         )}
       </IonContent>
     </IonPage>

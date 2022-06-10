@@ -2,13 +2,13 @@ import { IonContent, IonPage } from "@ionic/react";
 import MealItem from "../../components/MealItem";
 import TopBar from "../../components/TopBar";
 import { meals, today } from "../../../dummy";
-import "./styles.scss";
+import styled from "styled-components";
 
 const TodayPage: React.FC = () => {
   return (
     <IonPage>
       <TopBar logo />
-      <IonContent fullscreen className="today">
+      <TodayMain fullscreen>
         {today.meals.map((item, index, array) => {
           let type: "future" | "prev" | "next" = "future";
           const now = new Date().getTime();
@@ -43,9 +43,17 @@ const TodayPage: React.FC = () => {
 
           return <MealItem mealInfo={item} type={type} key={item.scheduleId} />;
         })}
-      </IonContent>
+      </TodayMain>
     </IonPage>
   );
 };
 
 export default TodayPage;
+
+const TodayMain = styled(IonContent)`
+::part(scroll) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+`;

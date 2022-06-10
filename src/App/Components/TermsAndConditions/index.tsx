@@ -1,7 +1,6 @@
 import { IonButton } from "@ionic/react";
-import Button from "app/components/Button";
 import React from "react";
-import "./styles.scss";
+import styled from "styled-components";
 
 const TermsAndConditions: React.FC<{
   onConfirm: () => void;
@@ -9,7 +8,7 @@ const TermsAndConditions: React.FC<{
 }> = (props) => {
   const { onConfirm, onReject } = props;
   return (
-    <div className={"terms"}>
+    <Terms>
       <h4> Términos y condiciones </h4> <p> ¡Bienvenido a RandoMenu! </p>{" "}
       <p>
         {" "}
@@ -310,16 +309,30 @@ const TermsAndConditions: React.FC<{
         proporcionen de forma gratuita, no seremos responsables de ninguna
         pérdida o daño de cualquier naturaleza.{" "}
       </p>
-      <div className="terms__buttons">
+      <ButtonsContainer>
         <IonButton fill="solid" onClick={onConfirm}>
           Aceptar
         </IonButton>
         <IonButton fill="outline" onClick={onReject}>
           Cancelar
         </IonButton>
-      </div>
-    </div>
+      </ButtonsContainer>
+    </Terms>
   );
 };
 
 export default TermsAndConditions;
+
+const Terms = styled.div`
+  padding: 1rem 1.5rem;
+  overflow-y: scroll;
+  color: white;
+`;
+
+const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  padding-top: 1rem;
+  margin: 0 auto;
+`;
