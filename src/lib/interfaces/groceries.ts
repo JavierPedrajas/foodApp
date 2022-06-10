@@ -1,7 +1,7 @@
 import { IIngredient } from ".";
 
 export interface IGroceryItem {
-  id: string;
+  ingredientID: string;
   completed?: boolean;
 }
 

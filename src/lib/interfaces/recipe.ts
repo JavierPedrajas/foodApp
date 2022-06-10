@@ -1,11 +1,8 @@
-import { IIngredient } from ".";
-import { ISchedule } from "./schedules";
-
 export interface IRecipe {
   id: string;
   name: string;
-  ingredients: IIngredient[];
-  schedules: ISchedule[];
+  ingredientIDs: string[];
+  scheduleIDs: string[];
 }
 
 export interface IRecipeDict {
