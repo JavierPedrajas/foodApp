@@ -1,4 +1,5 @@
 import { IonModal, IonButton, IonItem, IonLabel, IonInput } from "@ionic/react";
+import CustomInputLabel from "app/components/CustomInputLabel";
 import ModalWrapper from "app/components/ModalWrapper";
 import DeleteIngredientAlert from "app/pages/Ingredients/deleteIngredientAlert";
 import { useAppDispatch } from "lib/hooks/store";
@@ -32,7 +33,7 @@ const IngredientsModal: React.FC<IIngredientsModal> = ({
     } else {
       setIngredientName("");
     }
-  }, [selectedIngredient]);
+  }, [selectedIngredient, isOpen]);
 
   const onAddIngredient = async () => {
     if (ingredientName !== "") {
@@ -93,9 +94,9 @@ const IngredientsModal: React.FC<IIngredientsModal> = ({
         }
       >
         <IonItem>
-          <IonLabel position="floating" color="primary">
+          <CustomInputLabel>
             <FormattedMessage defaultMessage="Name" id="HAlOn1" />
-          </IonLabel>
+          </CustomInputLabel>
           <IonInput
             color="light"
             value={ingredientName}

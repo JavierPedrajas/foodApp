@@ -1,7 +1,11 @@
 import { IonAlert } from "@ionic/react";
-import { useAppDispatch } from "lib/hooks/store";
+import { useAppDispatch, useAppSelector } from "lib/hooks/store";
 import { IIngredient } from "lib/interfaces";
 import { deleteIngredient } from "lib/store/ingredientsSlice";
+import {
+  removeIngredientFromRecipes,
+  selectRecipes,
+} from "lib/store/recipesSlice";
 import React from "react";
 import { useIntl } from "react-intl";
 
@@ -20,9 +24,16 @@ const DeleteIngredientAlert: React.FC<IDeleteIngredientAlert> = ({
 }) => {
   const intl = useIntl();
   const dispatch = useAppDispatch();
+  const recipes = useAppSelector(selectRecipes);
 
   const onDeleteIngredient = async () => {
     if (selectedIngredient) {
+      await dispatch(
+        removeIngredientFromRecipes({
+          ingredientId: selectedIngredient.id,
+          recipes: Object.values(recipes),
+        })
+      );
       await dispatch(deleteIngredient(selectedIngredient));
     }
     closeAlertCallback();

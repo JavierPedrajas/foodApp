@@ -31,13 +31,8 @@ const Ingredients: React.FC = () => {
 
   const [selectedSchedule, setSelectedSchedule] = useState<ISchedule>();
 
-  const dispatch = useAppDispatch();
   const schedules = useAppSelector(selectSchedules);
   const isLoading = useAppSelector(selectIsLoadingSchedules);
-
-  const fetchSchedules = async () => {
-    await dispatch(getSchedules());
-  };
 
   const onEditSchedule = (sch: ISchedule) => {
     setSelectedSchedule(sch);
@@ -48,12 +43,6 @@ const Ingredients: React.FC = () => {
     setIsModalOpen(false);
     setSelectedSchedule(undefined);
   };
-
-  useEffect(() => {
-    if (!Object.keys(schedules).length) {
-      fetchSchedules();
-    }
-  }, []);
 
   const intl = useIntl();
 

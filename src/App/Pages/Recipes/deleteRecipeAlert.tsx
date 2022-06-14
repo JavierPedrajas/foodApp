@@ -1,40 +1,29 @@
 import { IonAlert } from "@ionic/react";
-import { useAppDispatch, useAppSelector } from "lib/hooks/store";
-import { ISchedule } from "lib/interfaces";
-import {
-  removeScheduleFromRecipes,
-  selectRecipes,
-} from "lib/store/recipesSlice";
-import { deleteSchedule } from "lib/store/schedulesSlice";
+import { useAppDispatch } from "lib/hooks/store";
+import { IRecipe } from "lib/interfaces";
+import { deleteRecipe } from "lib/store/recipesSlice";
 import React from "react";
 import { useIntl } from "react-intl";
 
-interface IDeleteScheduleAlert {
+interface IDeleteRecipeAlert {
   isOpen: boolean;
   closeAlertCallback: () => void;
   closeModalCallback: () => void;
-  selectedSchedule?: ISchedule;
+  selectedRecipe?: IRecipe;
 }
 
-const DeleteScheduleAlert: React.FC<IDeleteScheduleAlert> = ({
+const DeleteRecipeAlert: React.FC<IDeleteRecipeAlert> = ({
   isOpen,
   closeAlertCallback,
   closeModalCallback,
-  selectedSchedule,
+  selectedRecipe,
 }) => {
   const intl = useIntl();
   const dispatch = useAppDispatch();
-  const recipes = useAppSelector(selectRecipes);
 
-  const onDeleteSchedule = async () => {
-    if (selectedSchedule) {
-      await dispatch(
-        removeScheduleFromRecipes({
-          scheduleId: selectedSchedule.id,
-          recipes: Object.values(recipes),
-        })
-      );
-      await dispatch(deleteSchedule(selectedSchedule));
+  const onDeleteRecipe = async () => {
+    if (selectedRecipe) {
+      await dispatch(deleteRecipe(selectedRecipe));
     }
     closeAlertCallback();
     closeModalCallback();
@@ -46,8 +35,8 @@ const DeleteScheduleAlert: React.FC<IDeleteScheduleAlert> = ({
       onDidDismiss={closeAlertCallback}
       cssClass={"my-custom-select"}
       subHeader={intl.formatMessage({
-        defaultMessage: "Are you sure you want to delete this schedule?",
-        id: "jKnh1I",
+        defaultMessage: "Are you sure you want to delete this recipe?",
+        id: "YZqIjh",
       })}
       buttons={[
         {
@@ -63,11 +52,11 @@ const DeleteScheduleAlert: React.FC<IDeleteScheduleAlert> = ({
             defaultMessage: "Yes, Delete",
             id: "QEmYhz",
           }),
-          handler: onDeleteSchedule,
+          handler: onDeleteRecipe,
         },
       ]}
     />
   );
 };
 
-export default DeleteScheduleAlert;
+export default DeleteRecipeAlert;

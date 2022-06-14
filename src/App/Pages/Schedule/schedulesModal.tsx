@@ -1,4 +1,5 @@
 import { IonModal, IonButton, IonItem, IonLabel, IonInput } from "@ionic/react";
+import CustomInputLabel from "app/components/CustomInputLabel";
 import ModalWrapper from "app/components/ModalWrapper";
 import DeleteScheduleAlert from "app/pages/Schedule/deleteScheduleAlert";
 import { useAppDispatch } from "lib/hooks/store";
@@ -38,7 +39,7 @@ const SchedulesModal: React.FC<ISchedulesModal> = ({
       setScheduleTime({ hours: 0, minutes: 0 });
       setScheduleName("");
     }
-  }, [selectedSchedule]);
+  }, [selectedSchedule, isOpen]);
 
   const onAddSchedule = async () => {
     if (scheduleName !== "") {
@@ -98,9 +99,9 @@ const SchedulesModal: React.FC<ISchedulesModal> = ({
         }
       >
         <IonItem>
-          <IonLabel position="floating" color="primary">
+          <CustomInputLabel>
             <FormattedMessage defaultMessage="Name" id="HAlOn1" />
-          </IonLabel>
+          </CustomInputLabel>
           <IonInput
             color="light"
             value={scheduleName}
@@ -109,9 +110,9 @@ const SchedulesModal: React.FC<ISchedulesModal> = ({
           />
         </IonItem>
         <IonItem>
-          <IonLabel position="floating" color="primary">
+          <CustomInputLabel>
             <FormattedMessage defaultMessage="Time" id="ug01Mk" />
-          </IonLabel>
+          </CustomInputLabel>
           <IonInput
             color="light"
             value={`${scheduleTime.hours

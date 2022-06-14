@@ -48,6 +48,54 @@ export const deleteRecipe = createAsyncThunk(
   }
 );
 
+export const removeIngredientFromRecipes = createAsyncThunk(
+  "recipes/removeIngredientFromRecipes",
+  async (
+    {
+      ingredientId,
+      recipes,
+    }: {
+      ingredientId: string;
+      recipes: IRecipe[];
+    },
+    state
+  ) => {
+    recipes.forEach((recipe) => {
+      if (recipe.ingredientIDs.includes(ingredientId)) {
+        const newIngredients = recipe.ingredientIDs.filter(
+          (id) => id !== ingredientId
+        );
+        const newRecipe = { ...recipe, ingredientIDs: newIngredients };
+        state.dispatch(updateRecipe(newRecipe));
+      }
+    });
+  }
+);
+
+export const removeScheduleFromRecipes = createAsyncThunk(
+  "recipes/removeScheduleFromRecipes",
+  async (
+    {
+      scheduleId,
+      recipes,
+    }: {
+      scheduleId: string;
+      recipes: IRecipe[];
+    },
+    state
+  ) => {
+    recipes.forEach((recipe) => {
+      if (recipe.scheduleIDs.includes(scheduleId)) {
+        const newSchedules = recipe.scheduleIDs.filter(
+          (id) => id !== scheduleId
+        );
+        const newRecipe = { ...recipe, scheduleIDs: newSchedules };
+        state.dispatch(updateRecipe(newRecipe));
+      }
+    });
+  }
+);
+
 export const recipesSlice = createSlice({
   name: "recipesSlice",
   initialState,
