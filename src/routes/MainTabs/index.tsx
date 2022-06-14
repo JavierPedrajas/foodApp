@@ -8,10 +8,10 @@ import {
 import React, { useContext } from "react";
 import { Route } from "react-router-dom";
 import { groceriesRoute, scheduleRoute, todayRoute } from "..";
-import TodayPage from "../../app/pages/Today";
-import CalendarPage from "../../app/pages/Calendar";
+import TodayPage from "app/pages/Today";
+import CalendarPage from "app/pages/Calendar";
 
-import GroceriesPage from "../../app/pages/Groceries";
+import GroceriesPage from "app/pages/Groceries";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -19,7 +19,7 @@ import {
   faShoppingBasket,
 } from "@fortawesome/free-solid-svg-icons";
 import "./styles.scss";
-import CalendarToday from "../../app/components/CalendarToday";
+import CalendarToday from "app/components/CalendarToday";
 import styled from "styled-components";
 
 const MainTabs: React.FC = () => {

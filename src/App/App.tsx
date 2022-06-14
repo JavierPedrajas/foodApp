@@ -43,6 +43,7 @@ import Schedule from "app/pages/Schedule";
 import LangContextWrapper from "lib/context/LangContext";
 import { Provider } from "react-redux";
 import { store } from "lib/store";
+import InitStore from "app/components/InitStore";
 
 setupIonicReact();
 
@@ -109,6 +110,7 @@ const App: React.FC = () => {
 
   return (
     <Provider store={store}>
+      <InitStore />
       <LangContextWrapper loginStatus={loginStatus}>
         <IonApp>
           <IonReactRouter>

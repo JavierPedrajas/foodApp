@@ -1,8 +1,8 @@
 import { ISchedule, IRecipe } from ".";
 
 export interface IMealCalendar {
-  scheduleId: string;
-  recipeId: string;
+  scheduleID: string;
+  recipeID: string;
 }
 
 export interface IDay {

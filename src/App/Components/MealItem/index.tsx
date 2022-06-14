@@ -19,10 +19,10 @@ const MealItem: React.FC<IMealItem> = (props) => {
       return;
     }
 
-    const newMeal = meals[mealInfo.scheduleId];
+    const newMeal = meals[mealInfo.scheduleID];
     setMeal(newMeal);
 
-    const newRecipe = recipes[mealInfo.scheduleId];
+    const newRecipe = recipes[mealInfo.scheduleID];
     setRecipe(newRecipe);
   }, [mealInfo]);
 

@@ -1,7 +1,7 @@
 import {
   IDay,
   ICalendarDict,
-  IRecipeDict,
+  IRecipesDict,
   IIngredientsDict,
   ISchedulesDict,
 } from "../lib/interfaces";
@@ -14,40 +14,41 @@ export const meals: ISchedulesDict = {
   "5": { id: "5", name: "Cena", time: { hours: 21, minutes: 0 } },
 };
 
-const ingredients: IIngredientsDict = {
+export const ingredients: IIngredientsDict = {
   "1": { id: "1", name: "Pasta" },
   "2": { id: "2", name: "Tomate" },
 };
-export const recipes: IRecipeDict = {
+
+export const recipes: IRecipesDict = {
   "1": {
     id: "1",
     name: "Leche con cereales",
-    ingredients: [],
-    schedules: [meals[0]],
+    ingredientIDs: [],
+    scheduleIDs: ["1"],
   },
   "2": {
     id: "2",
     name: "Bocadillo de atún",
-    ingredients: [],
-    schedules: [meals[1]],
+    ingredientIDs: [],
+    scheduleIDs: ["2"],
   },
   "3": {
     id: "3",
     name: "Macarrones con tomate",
-    ingredients: [ingredients[0], ingredients[1]],
-    schedules: [meals[2], meals[4]],
+    ingredientIDs: ["1", "2"],
+    scheduleIDs: ["3", "5"],
   },
   "4": {
     id: "4",
     name: "Yogur",
-    ingredients: [],
-    schedules: [meals[3]],
+    ingredientIDs: [],
+    scheduleIDs: ["4"],
   },
   "5": {
     id: "5",
     name: "Salmón con arroz",
-    ingredients: [],
-    schedules: [meals[4]],
+    ingredientIDs: [],
+    scheduleIDs: ["5"],
   },
 };
 
@@ -55,11 +56,11 @@ export const today: IDay = {
   id: "1",
   date: "02/02/2022",
   meals: [
-    { scheduleId: "1", recipeId: "1" },
-    { scheduleId: "2", recipeId: "2" },
-    { scheduleId: "3", recipeId: "3" },
-    { scheduleId: "4", recipeId: "4" },
-    { scheduleId: "5", recipeId: "5" },
+    { scheduleID: "1", recipeID: "1" },
+    { scheduleID: "2", recipeID: "2" },
+    { scheduleID: "3", recipeID: "3" },
+    { scheduleID: "4", recipeID: "4" },
+    { scheduleID: "5", recipeID: "5" },
   ],
 };
 
@@ -68,22 +69,22 @@ export const week: ICalendarDict = {
     id: "1",
     date: "01/02/2022",
     meals: [
-      { scheduleId: "1", recipeId: "1" },
-      { scheduleId: "2", recipeId: "2" },
-      { scheduleId: "3", recipeId: "3" },
-      { scheduleId: "4", recipeId: "4" },
-      { scheduleId: "5", recipeId: "5" },
+      { scheduleID: "1", recipeID: "1" },
+      { scheduleID: "2", recipeID: "2" },
+      { scheduleID: "3", recipeID: "3" },
+      { scheduleID: "4", recipeID: "4" },
+      { scheduleID: "5", recipeID: "5" },
     ],
   },
   "2": {
     id: "2",
     date: "02/02/2022",
     meals: [
-      { scheduleId: "1", recipeId: "1" },
-      { scheduleId: "2", recipeId: "2" },
-      { scheduleId: "3", recipeId: "3" },
-      { scheduleId: "4", recipeId: "4" },
-      { scheduleId: "5", recipeId: "5" },
+      { scheduleID: "1", recipeID: "1" },
+      { scheduleID: "2", recipeID: "2" },
+      { scheduleID: "3", recipeID: "3" },
+      { scheduleID: "4", recipeID: "4" },
+      { scheduleID: "5", recipeID: "5" },
     ],
   },
 };

@@ -1,4 +1,4 @@
-import { IonItem, IonToolbar } from "@ionic/react";
+import { IonItem, IonSelect, IonToolbar, IonLabel } from "@ionic/react";
 import styled from "styled-components";
 
 export const NoItemsList = styled.div`
@@ -29,10 +29,12 @@ export const LoginSignupContainer = styled.div`
 `;
 
 export const StyledListItem = styled(IonItem)`
-  font-size: 1.8em;
+  font-size: 1.9em;
 
   &::part(native) {
-    border-bottom: 1px solid #ffffff50 !important;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--light) !important;
   }
 `;
 
@@ -40,4 +42,16 @@ export const StyledToolbar = styled(IonToolbar)`
   --background: var(--purple-dark);
   --color: var(--light);
   --border-color: transparent;
+`;
+
+export const StyledInputItem = styled(StyledListItem)`
+  &:focus-within {
+    border-bottom: 1px solid var(--main) !important;
+  }
+`;
+
+export const StyledSelectInput = styled(IonSelect)`
+  &::part(icon) {
+    color: var(--light) !important;
+  }
 `;
